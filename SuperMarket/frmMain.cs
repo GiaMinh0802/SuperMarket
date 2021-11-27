@@ -17,6 +17,7 @@ namespace SuperMarket
     public partial class fMain : Form
     {
         BindingSource listKH = new BindingSource();
+        BindingSource listNV = new BindingSource();
         public fMain()
         {
             InitializeComponent();
@@ -25,10 +26,17 @@ namespace SuperMarket
         #region Method
         void LoadAll()
         {
+            //
             dtgvKH.DataSource = listKH;
+            dtgvNV.DataSource = listNV;
             LoadListKH();
             AddKHBinding();
             LoadListNV();
+            //
+            LoadListNV();
+            AddNVBinding();
+            LoadOffice(cbOfficeNV);
+            LoadShift(cbShiftNV);
         }
         //
         // Khach hang
@@ -54,15 +62,6 @@ namespace SuperMarket
             textTotalKH.DataBindings.Add(new Binding("Text", dtgvKH.DataSource, "AccumulatedPoints", true, DataSourceUpdateMode.Never));
             textRankKH.DataBindings.Add(new Binding("Text", dtgvKH.DataSource, "Rank", true, DataSourceUpdateMode.Never));
         }
-        private void btnrefreshKH_Click(object sender, EventArgs e)
-        {
-            LoadListKH();
-        }
-        void LoadRank(ComboBox cb)
-        {
-            cb.DataSource = RankCustomerDAO.Instance.GetRankList();
-            cb.DisplayMember = "Rank";
-        }
         string RankByPoints(int point)
         {
             if (point < 500000)
@@ -86,7 +85,67 @@ namespace SuperMarket
         //
         void LoadListNV()
         {
-
+            listNV.DataSource = StaffDAO.Instance.GetNVList();
+            dtgvNV.Columns["IdStaff"].HeaderText = "ID";
+            dtgvNV.Columns["NameStaff"].HeaderText = "Tên nhân viên";
+            dtgvNV.Columns["IDIndividualStaff"].HeaderText = "CCCD/CMND";
+            dtgvNV.Columns["PhoneStaff"].HeaderText = "SĐT";
+            dtgvNV.Columns["AddressStaff"].HeaderText = "Địa chỉ";
+            dtgvNV.Columns["BirthdayStaff"].HeaderText = "Ngày sinh";
+            dtgvNV.Columns["SexStaff"].HeaderText = "Giới tính";
+            dtgvNV.Columns["OfficeStaff"].HeaderText = "Chức vụ";
+            dtgvNV.Columns["ShiftStaff"].HeaderText = "Ca làm";
+            dtgvNV.Columns["SalaryStaff"].HeaderText = "Lương cơ bản";
+        }
+        void AddNVBinding()
+        {
+            textIDNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "IdStaff", true, DataSourceUpdateMode.Never));
+            textNameNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "NameStaff", true, DataSourceUpdateMode.Never));
+            textCCCDNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "IDIndividualStaff", true, DataSourceUpdateMode.Never));
+            textSDTNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "PhoneStaff", true, DataSourceUpdateMode.Never));
+            textAddNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "AddressStaff", true, DataSourceUpdateMode.Never));
+            birthNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "BirthdayStaff", true, DataSourceUpdateMode.Never));
+            textSexNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "SexStaff", true, DataSourceUpdateMode.Never));
+            cbOfficeNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "OfficeStaff", true, DataSourceUpdateMode.Never));
+            cbShiftNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "ShiftStaff", true, DataSourceUpdateMode.Never));
+            textSalaryNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "SalaryStaff", true, DataSourceUpdateMode.Never));
+        }
+        void LoadOffice(ComboBox cb)
+        {
+            cb.DataSource = OfficeStaffDAO.Instance.GetOfficeList();
+            cb.DisplayMember = "Officestaff";
+        }
+        void LoadShift(ComboBox cb)
+        {
+            cb.DataSource = ShiftStaffDAO.Instance.GetShiftList();
+            cb.DisplayMember = "Shiftstaff";
+        }
+        List<Staff> GetNVListByShift(string shift)
+        {
+            List<Staff> listStaff = StaffDAO.Instance.GetNVListByShift(shift);
+            return listStaff;
+        }
+        List<Staff> SearchStaffByName(string name)
+        {
+            List<Staff> listStaff = StaffDAO.Instance.SearchStaffByName(name);
+            return listStaff;
+        }
+        int SalaryByOffice(string office)
+        {
+            if (office == "Quản lí")
+                return 11000000;
+            else if (office == "Quản lí kho")
+                return 10000000;
+            else if (office == "Vệ sinh")
+                return 18000;
+            else if (office == "Giữ xe")
+                return 15000;
+            else if (office == "Thu ngân")
+                return 22000;
+            else if (office == "Bảo vệ")
+                return 21000;
+            else
+                return 16000;
         }
         //
         // 
@@ -126,7 +185,7 @@ namespace SuperMarket
             string rank = RankByPoints(points);
             if (CustomerDAO.Instance.UpdateCustomer(id, name, add, phone, birthday, points, rank))
             {
-                MessageBox.Show("Sửa thành công");
+                MessageBox.Show("Cập nhật thành công");
                 LoadListKH();
             }
             else
@@ -151,9 +210,105 @@ namespace SuperMarket
         {
             listKH.DataSource = SearchCustomerByName(textSearchKH.Text);
         }
+        private void btnrefreshKH_Click(object sender, EventArgs e)
+        {
+            LoadListKH();
+        }
+        //
+        // Nhan vien
+        //
+        private void btnRefreshNV_Click(object sender, EventArgs e)
+        {
+            LoadListNV();
+        }
+        private void btnCa1_Click(object sender, EventArgs e)
+        {
+            string shift = "Ca 1";
+            listNV.DataSource = GetNVListByShift(shift);
+        }
+        private void btnCa2_Click(object sender, EventArgs e)
+        {
+            string shift = "Ca 2";
+            listNV.DataSource = GetNVListByShift(shift);
+        }
+
+        private void btnCa3_Click(object sender, EventArgs e)
+        {
+            string shift = "Ca 3";
+            listNV.DataSource = GetNVListByShift(shift);
+        }
+
+        private void btnFulltime_Click(object sender, EventArgs e)
+        {
+            string shift = "Fulltime";
+            listNV.DataSource = GetNVListByShift(shift);
+        }
+        private void btnAddNV_Click(object sender, EventArgs e)
+        {
+            string name = textNameNV.Text;
+            string idIndividual = textCCCDNV.Text;
+            string add = textAddNV.Text;
+            string phone = textSDTNV.Text;
+            string birthday = birthNV.Value.ToString("yyyMMdd");
+            string sex = textSexNV.Text;
+            string office = cbOfficeNV.Text;
+            string shift = cbShiftNV.Text;
+            int salary = SalaryByOffice(office);
+            if (StaffDAO.Instance.InsertStaff(name,idIndividual,phone,add,birthday,sex,office,shift,salary))
+            {
+                MessageBox.Show("Thêm thành công");
+                LoadListNV();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }
+        }
+        private void btnUpdateNV_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textIDNV.Text);
+            string name = textNameNV.Text;
+            string idIndividual = textCCCDNV.Text;
+            string add = textAddNV.Text;
+            string phone = textSDTNV.Text;
+            string birthday = birthNV.Value.ToString("yyyMMdd");
+            string sex = textSexNV.Text;
+            string office = cbOfficeNV.Text;
+            string shift = cbShiftNV.Text;
+            int salary = SalaryByOffice(office);
+            if (StaffDAO.Instance.UpdateStaff(id, name, idIndividual, phone, add, birthday, sex, office, shift, salary))
+            {
+                MessageBox.Show("Cập nhật thành công");
+                LoadListNV();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }
+
+        }
+        private void btnDeleteNV_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textIDNV.Text);
+            if (StaffDAO.Instance.DeleteStaff(id))
+            {
+                MessageBox.Show("Xóa thành công");
+                LoadListNV();
+            }    
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }    
+        }
+        private void btnSearchNV_Click(object sender, EventArgs e)
+        {
+            listNV.DataSource = SearchStaffByName(textSearchNV.Text);
+        }
         //
         //
         //
         #endregion
+
+
     }
 }

@@ -31,6 +31,8 @@ namespace SuperMarket
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fMain));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabcontrol = new System.Windows.Forms.TabControl();
             this.tabTT = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -91,21 +93,21 @@ namespace SuperMarket
             this.label2 = new System.Windows.Forms.Label();
             this.tabNV = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnUpdateNV = new System.Windows.Forms.Button();
+            this.btnDeleteNV = new System.Windows.Forms.Button();
+            this.btnAddNV = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.cbShiftNV = new System.Windows.Forms.ComboBox();
+            this.cbOfficeNV = new System.Windows.Forms.ComboBox();
+            this.birthNV = new System.Windows.Forms.DateTimePicker();
+            this.textSalaryNV = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textSexNV = new System.Windows.Forms.TextBox();
+            this.textCCCDNV = new System.Windows.Forms.TextBox();
+            this.textAddNV = new System.Windows.Forms.TextBox();
+            this.textSDTNV = new System.Windows.Forms.TextBox();
+            this.textNameNV = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -114,17 +116,17 @@ namespace SuperMarket
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.textIDNV = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button8 = new System.Windows.Forms.Button();
+            this.textSearchNV = new System.Windows.Forms.TextBox();
+            this.btnSearchNV = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.btnFulltime = new System.Windows.Forms.Button();
             this.btnCa3 = new System.Windows.Forms.Button();
             this.btnCa2 = new System.Windows.Forms.Button();
             this.btnCa1 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRefreshNV = new System.Windows.Forms.Button();
             this.dtgvNV = new System.Windows.Forms.DataGridView();
             this.label22 = new System.Windows.Forms.Label();
             this.lbNV = new System.Windows.Forms.Label();
@@ -633,7 +635,7 @@ namespace SuperMarket
             this.btnUpdateKH.Name = "btnUpdateKH";
             this.btnUpdateKH.Size = new System.Drawing.Size(120, 50);
             this.btnUpdateKH.TabIndex = 7;
-            this.btnUpdateKH.Text = "Sửa";
+            this.btnUpdateKH.Text = "Cập nhật";
             this.btnUpdateKH.UseVisualStyleBackColor = true;
             this.btnUpdateKH.Click += new System.EventHandler(this.btnUpdateKH_Click);
             // 
@@ -949,59 +951,62 @@ namespace SuperMarket
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox5.Controls.Add(this.button5);
-            this.groupBox5.Controls.Add(this.button6);
-            this.groupBox5.Controls.Add(this.button7);
+            this.groupBox5.Controls.Add(this.btnUpdateNV);
+            this.groupBox5.Controls.Add(this.btnDeleteNV);
+            this.groupBox5.Controls.Add(this.btnAddNV);
             this.groupBox5.Location = new System.Drawing.Point(660, 453);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(442, 71);
             this.groupBox5.TabIndex = 8;
             this.groupBox5.TabStop = false;
             // 
-            // button5
+            // btnUpdateNV
             // 
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button5.Location = new System.Drawing.Point(316, 15);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(120, 50);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "Sửa";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnUpdateNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdateNV.Location = new System.Drawing.Point(316, 15);
+            this.btnUpdateNV.Name = "btnUpdateNV";
+            this.btnUpdateNV.Size = new System.Drawing.Size(120, 50);
+            this.btnUpdateNV.TabIndex = 7;
+            this.btnUpdateNV.Text = "Cập nhật";
+            this.btnUpdateNV.UseVisualStyleBackColor = true;
+            this.btnUpdateNV.Click += new System.EventHandler(this.btnUpdateNV_Click);
             // 
-            // button6
+            // btnDeleteNV
             // 
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button6.Location = new System.Drawing.Point(170, 15);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(120, 50);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Xóa";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnDeleteNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDeleteNV.Location = new System.Drawing.Point(170, 15);
+            this.btnDeleteNV.Name = "btnDeleteNV";
+            this.btnDeleteNV.Size = new System.Drawing.Size(120, 50);
+            this.btnDeleteNV.TabIndex = 6;
+            this.btnDeleteNV.Text = "Xóa";
+            this.btnDeleteNV.UseVisualStyleBackColor = true;
+            this.btnDeleteNV.Click += new System.EventHandler(this.btnDeleteNV_Click);
             // 
-            // button7
+            // btnAddNV
             // 
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button7.Location = new System.Drawing.Point(22, 15);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(120, 50);
-            this.button7.TabIndex = 5;
-            this.button7.Text = "Thêm";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnAddNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAddNV.Location = new System.Drawing.Point(22, 15);
+            this.btnAddNV.Name = "btnAddNV";
+            this.btnAddNV.Size = new System.Drawing.Size(120, 50);
+            this.btnAddNV.TabIndex = 5;
+            this.btnAddNV.Text = "Thêm";
+            this.btnAddNV.UseVisualStyleBackColor = true;
+            this.btnAddNV.Click += new System.EventHandler(this.btnAddNV_Click);
             // 
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox6.Controls.Add(this.textBox17);
+            this.groupBox6.Controls.Add(this.cbShiftNV);
+            this.groupBox6.Controls.Add(this.cbOfficeNV);
+            this.groupBox6.Controls.Add(this.birthNV);
+            this.groupBox6.Controls.Add(this.textSalaryNV);
             this.groupBox6.Controls.Add(this.label24);
-            this.groupBox6.Controls.Add(this.textBox16);
-            this.groupBox6.Controls.Add(this.textBox6);
             this.groupBox6.Controls.Add(this.label23);
-            this.groupBox6.Controls.Add(this.textBox9);
-            this.groupBox6.Controls.Add(this.textBox10);
-            this.groupBox6.Controls.Add(this.textBox11);
-            this.groupBox6.Controls.Add(this.textBox12);
-            this.groupBox6.Controls.Add(this.textBox13);
-            this.groupBox6.Controls.Add(this.textBox14);
+            this.groupBox6.Controls.Add(this.textSexNV);
+            this.groupBox6.Controls.Add(this.textCCCDNV);
+            this.groupBox6.Controls.Add(this.textAddNV);
+            this.groupBox6.Controls.Add(this.textSDTNV);
+            this.groupBox6.Controls.Add(this.textNameNV);
             this.groupBox6.Controls.Add(this.label1);
             this.groupBox6.Controls.Add(this.label13);
             this.groupBox6.Controls.Add(this.label14);
@@ -1010,20 +1015,50 @@ namespace SuperMarket
             this.groupBox6.Controls.Add(this.label17);
             this.groupBox6.Controls.Add(this.label18);
             this.groupBox6.Controls.Add(this.label19);
-            this.groupBox6.Controls.Add(this.textBox15);
+            this.groupBox6.Controls.Add(this.textIDNV);
             this.groupBox6.Location = new System.Drawing.Point(660, 122);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(442, 340);
             this.groupBox6.TabIndex = 7;
             this.groupBox6.TabStop = false;
             // 
-            // textBox17
+            // cbShiftNV
             // 
-            this.textBox17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox17.Location = new System.Drawing.Point(170, 287);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(238, 27);
-            this.textBox17.TabIndex = 23;
+            this.cbShiftNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbShiftNV.FormattingEnabled = true;
+            this.cbShiftNV.Location = new System.Drawing.Point(299, 257);
+            this.cbShiftNV.Name = "cbShiftNV";
+            this.cbShiftNV.Size = new System.Drawing.Size(125, 28);
+            this.cbShiftNV.TabIndex = 26;
+            // 
+            // cbOfficeNV
+            // 
+            this.cbOfficeNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbOfficeNV.FormattingEnabled = true;
+            this.cbOfficeNV.Location = new System.Drawing.Point(170, 257);
+            this.cbOfficeNV.Name = "cbOfficeNV";
+            this.cbOfficeNV.Size = new System.Drawing.Size(125, 28);
+            this.cbOfficeNV.TabIndex = 25;
+            // 
+            // birthNV
+            // 
+            this.birthNV.CustomFormat = "dd-MM-yyyy";
+            this.birthNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.birthNV.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.birthNV.Location = new System.Drawing.Point(170, 197);
+            this.birthNV.Name = "birthNV";
+            this.birthNV.Size = new System.Drawing.Size(254, 27);
+            this.birthNV.TabIndex = 24;
+            this.birthNV.Value = new System.DateTime(2021, 11, 9, 0, 0, 0, 0);
+            // 
+            // textSalaryNV
+            // 
+            this.textSalaryNV.Enabled = false;
+            this.textSalaryNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textSalaryNV.Location = new System.Drawing.Point(170, 287);
+            this.textSalaryNV.Name = "textSalaryNV";
+            this.textSalaryNV.Size = new System.Drawing.Size(254, 27);
+            this.textSalaryNV.TabIndex = 23;
             // 
             // label24
             // 
@@ -1036,22 +1071,6 @@ namespace SuperMarket
             this.label24.Text = "Lương cơ bản";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox16
-            // 
-            this.textBox16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox16.Location = new System.Drawing.Point(293, 257);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(115, 27);
-            this.textBox16.TabIndex = 21;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox6.Location = new System.Drawing.Point(170, 257);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(115, 27);
-            this.textBox6.TabIndex = 20;
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -1063,53 +1082,45 @@ namespace SuperMarket
             this.label23.Text = "Chức vụ/Ca làm";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox9
+            // textSexNV
             // 
-            this.textBox9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox9.Location = new System.Drawing.Point(170, 227);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(238, 27);
-            this.textBox9.TabIndex = 18;
+            this.textSexNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textSexNV.Location = new System.Drawing.Point(170, 227);
+            this.textSexNV.Name = "textSexNV";
+            this.textSexNV.Size = new System.Drawing.Size(254, 27);
+            this.textSexNV.TabIndex = 18;
             // 
-            // textBox10
+            // textCCCDNV
             // 
-            this.textBox10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox10.Location = new System.Drawing.Point(170, 197);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(238, 27);
-            this.textBox10.TabIndex = 17;
+            this.textCCCDNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textCCCDNV.Location = new System.Drawing.Point(170, 167);
+            this.textCCCDNV.Name = "textCCCDNV";
+            this.textCCCDNV.Size = new System.Drawing.Size(254, 27);
+            this.textCCCDNV.TabIndex = 16;
             // 
-            // textBox11
+            // textAddNV
             // 
-            this.textBox11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox11.Location = new System.Drawing.Point(170, 167);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(238, 27);
-            this.textBox11.TabIndex = 16;
+            this.textAddNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textAddNV.Location = new System.Drawing.Point(170, 137);
+            this.textAddNV.Name = "textAddNV";
+            this.textAddNV.Size = new System.Drawing.Size(254, 27);
+            this.textAddNV.TabIndex = 15;
             // 
-            // textBox12
+            // textSDTNV
             // 
-            this.textBox12.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox12.Location = new System.Drawing.Point(170, 137);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(238, 27);
-            this.textBox12.TabIndex = 15;
+            this.textSDTNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textSDTNV.Location = new System.Drawing.Point(170, 107);
+            this.textSDTNV.Name = "textSDTNV";
+            this.textSDTNV.Size = new System.Drawing.Size(254, 27);
+            this.textSDTNV.TabIndex = 14;
             // 
-            // textBox13
+            // textNameNV
             // 
-            this.textBox13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox13.Location = new System.Drawing.Point(170, 107);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(238, 27);
-            this.textBox13.TabIndex = 14;
-            // 
-            // textBox14
-            // 
-            this.textBox14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox14.Location = new System.Drawing.Point(170, 77);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(238, 27);
-            this.textBox14.TabIndex = 13;
+            this.textNameNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textNameNV.Location = new System.Drawing.Point(170, 77);
+            this.textNameNV.Name = "textNameNV";
+            this.textNameNV.Size = new System.Drawing.Size(254, 27);
+            this.textNameNV.TabIndex = 13;
             // 
             // label1
             // 
@@ -1199,19 +1210,20 @@ namespace SuperMarket
             this.label19.Text = "Thông Tin Cá Nhân";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox15
+            // textIDNV
             // 
-            this.textBox15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox15.Location = new System.Drawing.Point(170, 47);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(238, 27);
-            this.textBox15.TabIndex = 1;
+            this.textIDNV.Enabled = false;
+            this.textIDNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textIDNV.Location = new System.Drawing.Point(170, 47);
+            this.textIDNV.Name = "textIDNV";
+            this.textIDNV.Size = new System.Drawing.Size(254, 27);
+            this.textIDNV.TabIndex = 1;
             // 
             // groupBox7
             // 
             this.groupBox7.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox7.Controls.Add(this.textBox1);
-            this.groupBox7.Controls.Add(this.button8);
+            this.groupBox7.Controls.Add(this.textSearchNV);
+            this.groupBox7.Controls.Add(this.btnSearchNV);
             this.groupBox7.Controls.Add(this.label21);
             this.groupBox7.Location = new System.Drawing.Point(660, 49);
             this.groupBox7.Name = "groupBox7";
@@ -1219,23 +1231,24 @@ namespace SuperMarket
             this.groupBox7.TabIndex = 6;
             this.groupBox7.TabStop = false;
             // 
-            // textBox1
+            // textSearchNV
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(36, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(275, 27);
-            this.textBox1.TabIndex = 6;
+            this.textSearchNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textSearchNV.Location = new System.Drawing.Point(36, 40);
+            this.textSearchNV.Name = "textSearchNV";
+            this.textSearchNV.Size = new System.Drawing.Size(275, 27);
+            this.textSearchNV.TabIndex = 6;
             // 
-            // button8
+            // btnSearchNV
             // 
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button8.Location = new System.Drawing.Point(333, 39);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 28);
-            this.button8.TabIndex = 5;
-            this.button8.Text = "Tìm";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnSearchNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSearchNV.Location = new System.Drawing.Point(333, 39);
+            this.btnSearchNV.Name = "btnSearchNV";
+            this.btnSearchNV.Size = new System.Drawing.Size(75, 28);
+            this.btnSearchNV.TabIndex = 5;
+            this.btnSearchNV.Text = "Tìm";
+            this.btnSearchNV.UseVisualStyleBackColor = true;
+            this.btnSearchNV.Click += new System.EventHandler(this.btnSearchNV_Click);
             // 
             // label21
             // 
@@ -1255,7 +1268,7 @@ namespace SuperMarket
             this.groupBox8.Controls.Add(this.btnCa3);
             this.groupBox8.Controls.Add(this.btnCa2);
             this.groupBox8.Controls.Add(this.btnCa1);
-            this.groupBox8.Controls.Add(this.button1);
+            this.groupBox8.Controls.Add(this.btnRefreshNV);
             this.groupBox8.Controls.Add(this.dtgvNV);
             this.groupBox8.Controls.Add(this.label22);
             this.groupBox8.Location = new System.Drawing.Point(6, 49);
@@ -1273,6 +1286,7 @@ namespace SuperMarket
             this.btnFulltime.TabIndex = 11;
             this.btnFulltime.Text = "Fulltime\r\n7:00 - 22:00";
             this.btnFulltime.UseVisualStyleBackColor = true;
+            this.btnFulltime.Click += new System.EventHandler(this.btnFulltime_Click);
             // 
             // btnCa3
             // 
@@ -1283,6 +1297,7 @@ namespace SuperMarket
             this.btnCa3.TabIndex = 10;
             this.btnCa3.Text = "Ca 3\r\n17:00 - 22:00";
             this.btnCa3.UseVisualStyleBackColor = true;
+            this.btnCa3.Click += new System.EventHandler(this.btnCa3_Click);
             // 
             // btnCa2
             // 
@@ -1293,6 +1308,7 @@ namespace SuperMarket
             this.btnCa2.TabIndex = 9;
             this.btnCa2.Text = "Ca 2\r\n12:00 - 17:00";
             this.btnCa2.UseVisualStyleBackColor = true;
+            this.btnCa2.Click += new System.EventHandler(this.btnCa2_Click);
             // 
             // btnCa1
             // 
@@ -1303,21 +1319,39 @@ namespace SuperMarket
             this.btnCa1.TabIndex = 8;
             this.btnCa1.Text = "Ca 1\r\n7:00 - 12:00";
             this.btnCa1.UseVisualStyleBackColor = true;
+            this.btnCa1.Click += new System.EventHandler(this.btnCa1_Click);
             // 
-            // button1
+            // btnRefreshNV
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(567, 23);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 28);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Refresh";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnRefreshNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnRefreshNV.Location = new System.Drawing.Point(567, 23);
+            this.btnRefreshNV.Name = "btnRefreshNV";
+            this.btnRefreshNV.Size = new System.Drawing.Size(75, 28);
+            this.btnRefreshNV.TabIndex = 7;
+            this.btnRefreshNV.Text = "Refresh";
+            this.btnRefreshNV.UseVisualStyleBackColor = true;
+            this.btnRefreshNV.Click += new System.EventHandler(this.btnRefreshNV_Click);
             // 
             // dtgvNV
             // 
             this.dtgvNV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvNV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgvNV.ColumnHeadersHeight = 30;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvNV.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgvNV.Location = new System.Drawing.Point(6, 57);
             this.dtgvNV.Name = "dtgvNV";
             this.dtgvNV.RowTemplate.Height = 25;
@@ -2696,16 +2730,15 @@ namespace SuperMarket
         private System.Windows.Forms.Label lbNCC;
         private System.Windows.Forms.Label lbDT;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnUpdateNV;
+        private System.Windows.Forms.Button btnDeleteNV;
+        private System.Windows.Forms.Button btnAddNV;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox textSexNV;
+        private System.Windows.Forms.TextBox textCCCDNV;
+        private System.Windows.Forms.TextBox textAddNV;
+        private System.Windows.Forms.TextBox textSDTNV;
+        private System.Windows.Forms.TextBox textNameNV;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
@@ -2714,15 +2747,13 @@ namespace SuperMarket
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox textIDNV;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnSearchNV;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox textSalaryNV;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Button button9;
@@ -2860,14 +2891,17 @@ namespace SuperMarket
         private System.Windows.Forms.DataGridView dtgvKH;
         private System.Windows.Forms.Button btnrefreshKH;
         private System.Windows.Forms.TextBox textRankKH;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textSearchNV;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button btnFulltime;
         private System.Windows.Forms.Button btnCa3;
         private System.Windows.Forms.Button btnCa2;
         private System.Windows.Forms.Button btnCa1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRefreshNV;
         private System.Windows.Forms.DataGridView dtgvNV;
+        private System.Windows.Forms.DateTimePicker birthNV;
+        private System.Windows.Forms.ComboBox cbShiftNV;
+        private System.Windows.Forms.ComboBox cbOfficeNV;
     }
 }
 

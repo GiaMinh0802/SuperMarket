@@ -30,6 +30,5 @@ namespace SuperMarket.DAO
             }
             return ranklist;
         }
-
     }
 }
