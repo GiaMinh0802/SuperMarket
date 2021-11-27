@@ -24,28 +24,25 @@ namespace SuperMarket
             InitializeComponent();
             LoadAll();
         }
-        #region Method
         void LoadAll()
         {
             dtgvKH.DataSource = listKH;
             dtgvNV.DataSource = listNV;
             dtgvNCC.DataSource = listNCC;
-            //
+            // Khach hang
             LoadListKH();
             AddKHBinding();
             LoadListNV();
-            //
+            // Nhan vien
             LoadListNV();
             AddNVBinding();
             LoadOffice(cbOfficeNV);
             LoadShift(cbShiftNV);
-            //
+            // Nha cung cap
             LoadListNCC();
             AddNCCBinding();
         }
-        //
-        // Khach hang
-        //
+        #region Khach hang
         void LoadListKH()
         {
             listKH.DataSource = CustomerDAO.Instance.GetKHList();
@@ -85,9 +82,66 @@ namespace SuperMarket
             List<Customer> listCustomer = CustomerDAO.Instance.SearchCustomerByName(name);
             return listCustomer;
         }
-        //
-        // Nhan vien
-        //
+        private void btnAddKH_Click(object sender, EventArgs e)
+        {
+            string name = textNameKH.Text;
+            string add = textAddKH.Text;
+            string phone = textSDTKH.Text;
+            string birthday = birthKH.Value.ToString("yyyMMdd");
+            int points = Convert.ToInt32(textTotalKH.Text);
+            string rank = RankByPoints(points);
+            if (CustomerDAO.Instance.InsertCustomer(name, add, phone, birthday, points, rank))
+            {
+                MessageBox.Show("Thêm thành công");
+                LoadListKH();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }
+        }
+        private void btnUpdateKH_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textIDKH.Text);
+            string name = textNameKH.Text;
+            string add = textAddKH.Text;
+            string phone = textSDTKH.Text;
+            string birthday = birthKH.Value.ToString("yyyMMdd");
+            int points = Convert.ToInt32(textTotalKH.Text);
+            string rank = RankByPoints(points);
+            if (CustomerDAO.Instance.UpdateCustomer(id, name, add, phone, birthday, points, rank))
+            {
+                MessageBox.Show("Cập nhật thành công");
+                LoadListKH();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }
+        }
+        private void btnDeleteKH_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textIDKH.Text);
+            if (CustomerDAO.Instance.DeleteCustomer(id))
+            {
+                MessageBox.Show("Xóa thành công");
+                LoadListKH();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }
+        }
+        private void btnSearchKH_Click(object sender, EventArgs e)
+        {
+            listKH.DataSource = SearchCustomerByName(textSearchKH.Text);
+        }
+        private void btnrefreshKH_Click(object sender, EventArgs e)
+        {
+            LoadListKH();
+        }
+        #endregion
+        #region Nhan vien
         void LoadListNV()
         {
             listNV.DataSource = StaffDAO.Instance.GetNVList();
@@ -152,101 +206,6 @@ namespace SuperMarket
             else
                 return 16000;
         }
-        //
-        // Nha cung cap
-        //
-        void LoadListNCC()
-        {
-            listNCC.DataSource = SupplierDAO.Instance.GetNCCList();
-            dtgvNCC.Columns["Id"].HeaderText = "ID";
-            dtgvNCC.Columns["NameSupplier"].HeaderText = "Tên nhà cung cấp";
-            dtgvNCC.Columns["AddressSupplier"].HeaderText = "Địa chỉ";
-            dtgvNCC.Columns["PhoneSupplier"].HeaderText = "SĐT";
-            dtgvNCC.Columns["NameGoods"].HeaderText = "Mặt hàng cung cấp";
-        }
-        void AddNCCBinding()
-        {
-            textIDNCC.DataBindings.Add(new Binding("Text", dtgvNCC.DataSource, "Id", true, DataSourceUpdateMode.Never));
-            textNameNCC.DataBindings.Add(new Binding("Text", dtgvNCC.DataSource, "NameSupplier", true, DataSourceUpdateMode.Never));
-            textAddNCC.DataBindings.Add(new Binding("Text", dtgvNCC.DataSource, "AddressSupplier", true, DataSourceUpdateMode.Never));
-            textSDTNCC.DataBindings.Add(new Binding("Text", dtgvNCC.DataSource, "PhoneSupplier", true, DataSourceUpdateMode.Never));
-            textGoodsNCC.DataBindings.Add(new Binding("Text", dtgvNCC.DataSource, "NameGoods", true, DataSourceUpdateMode.Never));
-        }
-        List<Supplier> SearchSupplierByName(string name)
-        {
-            List<Supplier> listSupplier = SupplierDAO.Instance.SearchSupplierByName(name);
-            return listSupplier;
-        }
-        //
-        //
-        //
-        #endregion
-
-        #region Events
-        //
-        // Khach hang
-        //
-        private void btnAddKH_Click(object sender, EventArgs e)
-        {
-            string name = textNameKH.Text;
-            string add = textAddKH.Text;
-            string phone = textSDTKH.Text;
-            string birthday = birthKH.Value.ToString("yyyMMdd");
-            int points = Convert.ToInt32(textTotalKH.Text);
-            string rank = RankByPoints(points);
-            if (CustomerDAO.Instance.InsertCustomer(name, add, phone, birthday, points, rank))
-            {
-                MessageBox.Show("Thêm thành công");
-                LoadListKH();
-            }
-            else
-            {
-                MessageBox.Show("Lỗi");
-            }
-        }
-        private void btnUpdateKH_Click(object sender, EventArgs e)
-        {
-            int id = Convert.ToInt32(textIDKH.Text);
-            string name = textNameKH.Text;
-            string add = textAddKH.Text;
-            string phone = textSDTKH.Text;
-            string birthday = birthKH.Value.ToString("yyyMMdd");
-            int points = Convert.ToInt32(textTotalKH.Text);
-            string rank = RankByPoints(points);
-            if (CustomerDAO.Instance.UpdateCustomer(id, name, add, phone, birthday, points, rank))
-            {
-                MessageBox.Show("Cập nhật thành công");
-                LoadListKH();
-            }
-            else
-            {
-                MessageBox.Show("Lỗi");
-            }
-        }
-        private void btnDeleteKH_Click(object sender, EventArgs e)
-        {
-            int id = Convert.ToInt32(textIDKH.Text);
-            if (CustomerDAO.Instance.DeleteCustomer(id))
-            {
-                MessageBox.Show("Xóa thành công");
-                LoadListKH();
-            }
-            else
-            {
-                MessageBox.Show("Lỗi");
-            }
-        }
-        private void btnSearchKH_Click(object sender, EventArgs e)
-        {
-            listKH.DataSource = SearchCustomerByName(textSearchKH.Text);
-        }
-        private void btnrefreshKH_Click(object sender, EventArgs e)
-        {
-            LoadListKH();
-        }
-        //
-        // Nhan vien
-        //
         private void btnRefreshNV_Click(object sender, EventArgs e)
         {
             LoadListNV();
@@ -282,7 +241,7 @@ namespace SuperMarket
             string office = cbOfficeNV.Text;
             string shift = cbShiftNV.Text;
             int salary = SalaryByOffice(office);
-            if (StaffDAO.Instance.InsertStaff(name,idIndividual,phone,add,birthday,sex,office,shift,salary))
+            if (StaffDAO.Instance.InsertStaff(name, idIndividual, phone, add, birthday, sex, office, shift, salary))
             {
                 MessageBox.Show("Thêm thành công");
                 LoadListNV();
@@ -322,19 +281,40 @@ namespace SuperMarket
             {
                 MessageBox.Show("Xóa thành công");
                 LoadListNV();
-            }    
+            }
             else
             {
                 MessageBox.Show("Lỗi");
-            }    
+            }
         }
         private void btnSearchNV_Click(object sender, EventArgs e)
         {
             listNV.DataSource = SearchStaffByName(textSearchNV.Text);
         }
-        //
-        // Nha cung cap
-        //
+        #endregion
+        #region Nha cung cap
+        void LoadListNCC()
+        {
+            listNCC.DataSource = SupplierDAO.Instance.GetNCCList();
+            dtgvNCC.Columns["Id"].HeaderText = "ID";
+            dtgvNCC.Columns["NameSupplier"].HeaderText = "Tên nhà cung cấp";
+            dtgvNCC.Columns["AddressSupplier"].HeaderText = "Địa chỉ";
+            dtgvNCC.Columns["PhoneSupplier"].HeaderText = "SĐT";
+            dtgvNCC.Columns["NameGoods"].HeaderText = "Mặt hàng cung cấp";
+        }
+        void AddNCCBinding()
+        {
+            textIDNCC.DataBindings.Add(new Binding("Text", dtgvNCC.DataSource, "Id", true, DataSourceUpdateMode.Never));
+            textNameNCC.DataBindings.Add(new Binding("Text", dtgvNCC.DataSource, "NameSupplier", true, DataSourceUpdateMode.Never));
+            textAddNCC.DataBindings.Add(new Binding("Text", dtgvNCC.DataSource, "AddressSupplier", true, DataSourceUpdateMode.Never));
+            textSDTNCC.DataBindings.Add(new Binding("Text", dtgvNCC.DataSource, "PhoneSupplier", true, DataSourceUpdateMode.Never));
+            textGoodsNCC.DataBindings.Add(new Binding("Text", dtgvNCC.DataSource, "NameGoods", true, DataSourceUpdateMode.Never));
+        }
+        List<Supplier> SearchSupplierByName(string name)
+        {
+            List<Supplier> listSupplier = SupplierDAO.Instance.SearchSupplierByName(name);
+            return listSupplier;
+        }
         private void btnRefreshNCC_Click(object sender, EventArgs e)
         {
             LoadListNCC();
@@ -387,8 +367,9 @@ namespace SuperMarket
         }
         private void btnSearchNCC_Click(object sender, EventArgs e)
         {
-            listNCC.DataSource = SearchSupplierByName(textSearchNCC.Text); 
+            listNCC.DataSource = SearchSupplierByName(textSearchNCC.Text);
         }
         #endregion
+        #region 
     }
 }
