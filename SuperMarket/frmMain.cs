@@ -18,6 +18,7 @@ namespace SuperMarket
     {
         BindingSource listKH = new BindingSource();
         BindingSource listNV = new BindingSource();
+        BindingSource listNCC = new BindingSource();
         public fMain()
         {
             InitializeComponent();
@@ -26,9 +27,10 @@ namespace SuperMarket
         #region Method
         void LoadAll()
         {
-            //
             dtgvKH.DataSource = listKH;
             dtgvNV.DataSource = listNV;
+            dtgvNCC.DataSource = listNCC;
+            //
             LoadListKH();
             AddKHBinding();
             LoadListNV();
@@ -37,6 +39,9 @@ namespace SuperMarket
             AddNVBinding();
             LoadOffice(cbOfficeNV);
             LoadShift(cbShiftNV);
+            //
+            LoadListNCC();
+            AddNCCBinding();
         }
         //
         // Khach hang
@@ -148,7 +153,32 @@ namespace SuperMarket
                 return 16000;
         }
         //
-        // 
+        // Nha cung cap
+        //
+        void LoadListNCC()
+        {
+            listNCC.DataSource = SupplierDAO.Instance.GetNCCList();
+            dtgvNCC.Columns["Id"].HeaderText = "ID";
+            dtgvNCC.Columns["NameSupplier"].HeaderText = "Tên nhà cung cấp";
+            dtgvNCC.Columns["AddressSupplier"].HeaderText = "Địa chỉ";
+            dtgvNCC.Columns["PhoneSupplier"].HeaderText = "SĐT";
+            dtgvNCC.Columns["NameGoods"].HeaderText = "Mặt hàng cung cấp";
+        }
+        void AddNCCBinding()
+        {
+            textIDNCC.DataBindings.Add(new Binding("Text", dtgvNCC.DataSource, "Id", true, DataSourceUpdateMode.Never));
+            textNameNCC.DataBindings.Add(new Binding("Text", dtgvNCC.DataSource, "NameSupplier", true, DataSourceUpdateMode.Never));
+            textAddNCC.DataBindings.Add(new Binding("Text", dtgvNCC.DataSource, "AddressSupplier", true, DataSourceUpdateMode.Never));
+            textSDTNCC.DataBindings.Add(new Binding("Text", dtgvNCC.DataSource, "PhoneSupplier", true, DataSourceUpdateMode.Never));
+            textGoodsNCC.DataBindings.Add(new Binding("Text", dtgvNCC.DataSource, "NameGoods", true, DataSourceUpdateMode.Never));
+        }
+        List<Supplier> SearchSupplierByName(string name)
+        {
+            List<Supplier> listSupplier = SupplierDAO.Instance.SearchSupplierByName(name);
+            return listSupplier;
+        }
+        //
+        //
         //
         #endregion
 
@@ -231,13 +261,11 @@ namespace SuperMarket
             string shift = "Ca 2";
             listNV.DataSource = GetNVListByShift(shift);
         }
-
         private void btnCa3_Click(object sender, EventArgs e)
         {
             string shift = "Ca 3";
             listNV.DataSource = GetNVListByShift(shift);
         }
-
         private void btnFulltime_Click(object sender, EventArgs e)
         {
             string shift = "Fulltime";
@@ -305,10 +333,62 @@ namespace SuperMarket
             listNV.DataSource = SearchStaffByName(textSearchNV.Text);
         }
         //
+        // Nha cung cap
         //
-        //
+        private void btnRefreshNCC_Click(object sender, EventArgs e)
+        {
+            LoadListNCC();
+        }
+        private void btnAddNCC_Click(object sender, EventArgs e)
+        {
+            string namesupplier = textNameNCC.Text;
+            string add = textAddNCC.Text;
+            string phone = textSDTNCC.Text;
+            string namegoods = textGoodsNCC.Text;
+            if (SupplierDAO.Instance.InsertSupplier(namesupplier, add, phone, namegoods))
+            {
+                MessageBox.Show("Thêm thành công");
+                LoadListNCC();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }
+        }
+        private void btnUpdateNCC_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textIDNCC.Text);
+            string namesupplier = textNameNCC.Text;
+            string add = textAddNCC.Text;
+            string phone = textSDTNCC.Text;
+            string namegoods = textGoodsNCC.Text;
+            if (SupplierDAO.Instance.UpdateSupplier(id, namesupplier, add, phone, namegoods))
+            {
+                MessageBox.Show("Cập nhật thành công");
+                LoadListNCC();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }
+        }
+        private void btnDeleteNCC_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textIDNCC.Text);
+            if (SupplierDAO.Instance.DeleteSupplier(id))
+            {
+                MessageBox.Show("Xóa thành công");
+                LoadListNCC();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }
+        }
+        private void btnSearchNCC_Click(object sender, EventArgs e)
+        {
+            listNCC.DataSource = SearchSupplierByName(textSearchNCC.Text); 
+        }
         #endregion
-
-
     }
 }
