@@ -30,17 +30,17 @@ namespace SuperMarket.DAO
             }
             return supplierlist;
         }
-        public bool InsertSupplier(string nameSupplier, string address, string phone, string nameGoods)
+        public bool InsertSupplier(string nameSupplier, string address, string phone)
         {
-            string query = String.Format("INSERT dbo.Supplier (nameSupplier,addressSupplier,phoneSupplier,nameGoods) " +
-                "VALUES (N'{0}', N'{1}', '{2}', N'{3}')", nameSupplier, address, phone, nameGoods);
+            string query = String.Format("INSERT dbo.Supplier (nameSupplier,addressSupplier,phoneSupplier) " +
+                "VALUES (N'{0}', N'{1}', '{2}')", nameSupplier, address, phone);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
-        public bool UpdateSupplier(int id, string nameSupplier, string address, string phone, string nameGoods)
+        public bool UpdateSupplier(int id, string nameSupplier, string address, string phone)
         {
-            string query = String.Format("UPDATE dbo.Supplier SET nameSupplier = N'{0}', addressSupplier = N'{1}', phoneSupplier = '{2}', nameGoods = N'{3}' " +
-                "WHERE id = {4}", nameSupplier, address, phone, nameGoods, id);
+            string query = String.Format("UPDATE dbo.Supplier SET nameSupplier = N'{0}', addressSupplier = N'{1}', phoneSupplier = '{2}'" +
+                "WHERE id = {3}", nameSupplier, address, phone, id);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }

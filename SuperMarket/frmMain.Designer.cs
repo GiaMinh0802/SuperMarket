@@ -31,10 +31,12 @@ namespace SuperMarket
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabcontrol = new System.Windows.Forms.TabControl();
             this.tabTT = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -50,7 +52,7 @@ namespace SuperMarket
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label60 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
-            this.comboBox10 = new System.Windows.Forms.ComboBox();
+            this.cbTypeBill = new System.Windows.Forms.ComboBox();
             this.label58 = new System.Windows.Forms.Label();
             this.comboBox11 = new System.Windows.Forms.ComboBox();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
@@ -134,20 +136,20 @@ namespace SuperMarket
             this.lbNV = new System.Windows.Forms.Label();
             this.tabHH = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btnUpdateHH = new System.Windows.Forms.Button();
+            this.btnDeleteHH = new System.Windows.Forms.Button();
+            this.btnAddHH = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.textBox25 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.cbNameSupplierHH = new System.Windows.Forms.ComboBox();
+            this.HSD = new System.Windows.Forms.DateTimePicker();
+            this.NSX = new System.Windows.Forms.DateTimePicker();
+            this.cbTypeHH = new System.Windows.Forms.ComboBox();
+            this.textPriceSellHH = new System.Windows.Forms.TextBox();
+            this.textPriceBuyHH = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.textBox23 = new System.Windows.Forms.TextBox();
-            this.textBox24 = new System.Windows.Forms.TextBox();
-            this.textBox26 = new System.Windows.Forms.TextBox();
-            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.textquantityHH = new System.Windows.Forms.TextBox();
+            this.textVATHH = new System.Windows.Forms.TextBox();
+            this.textNameHH = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
@@ -156,47 +158,39 @@ namespace SuperMarket
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
-            this.textBox28 = new System.Windows.Forms.TextBox();
+            this.textIDHH = new System.Windows.Forms.TextBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.textBox29 = new System.Windows.Forms.TextBox();
-            this.button12 = new System.Windows.Forms.Button();
+            this.btnSearchNameHH = new System.Windows.Forms.Button();
+            this.textSearchNameHH = new System.Windows.Forms.TextBox();
+            this.btnSearchTypeHH = new System.Windows.Forms.Button();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.cbSearchTypeHH = new System.Windows.Forms.ComboBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.btnRefreshHH = new System.Windows.Forms.Button();
+            this.dtgvHH = new System.Windows.Forms.DataGridView();
             this.label37 = new System.Windows.Forms.Label();
-            this.listView3 = new System.Windows.Forms.ListView();
-            this.columnHeader12 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader13 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader14 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader15 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader16 = new System.Windows.Forms.ColumnHeader();
             this.lbHH = new System.Windows.Forms.Label();
             this.tabNCC = new System.Windows.Forms.TabPage();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.btnSearchNCC = new System.Windows.Forms.Button();
+            this.textSearchNCC = new System.Windows.Forms.TextBox();
+            this.label46 = new System.Windows.Forms.Label();
             this.btnUpdateNCC = new System.Windows.Forms.Button();
             this.btnDeleteNCC = new System.Windows.Forms.Button();
-            this.btnAddNCC = new System.Windows.Forms.Button();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.textGoodsNCC = new System.Windows.Forms.TextBox();
-            this.textAddNCC = new System.Windows.Forms.TextBox();
-            this.textSDTNCC = new System.Windows.Forms.TextBox();
-            this.textNameNCC = new System.Windows.Forms.TextBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.textIDNCC = new System.Windows.Forms.TextBox();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.textSearchNCC = new System.Windows.Forms.TextBox();
-            this.btnSearchNCC = new System.Windows.Forms.Button();
-            this.label46 = new System.Windows.Forms.Label();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.btnRefreshNCC = new System.Windows.Forms.Button();
+            this.btnAddNCC = new System.Windows.Forms.Button();
+            this.textAddNCC = new System.Windows.Forms.TextBox();
             this.dtgvNCC = new System.Windows.Forms.DataGridView();
             this.label48 = new System.Windows.Forms.Label();
+            this.textSDTNCC = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.textNameNCC = new System.Windows.Forms.TextBox();
+            this.textIDNCC = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
             this.lbNCC = new System.Windows.Forms.Label();
             this.tabDT = new System.Windows.Forms.TabPage();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
@@ -267,10 +261,8 @@ namespace SuperMarket
             this.groupBox10.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvHH)).BeginInit();
             this.tabNCC.SuspendLayout();
-            this.groupBox13.SuspendLayout();
-            this.groupBox14.SuspendLayout();
-            this.groupBox15.SuspendLayout();
             this.groupBox16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvNCC)).BeginInit();
             this.tabDT.SuspendLayout();
@@ -300,7 +292,7 @@ namespace SuperMarket
             this.tabcontrol.ImageList = this.imageList1;
             this.tabcontrol.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabcontrol.ItemSize = new System.Drawing.Size(150, 50);
-            this.tabcontrol.Location = new System.Drawing.Point(0, 2);
+            this.tabcontrol.Location = new System.Drawing.Point(0, 1);
             this.tabcontrol.Name = "tabcontrol";
             this.tabcontrol.SelectedIndex = 0;
             this.tabcontrol.Size = new System.Drawing.Size(1121, 596);
@@ -371,7 +363,7 @@ namespace SuperMarket
             this.groupBox22.Controls.Add(this.numericUpDown1);
             this.groupBox22.Controls.Add(this.label60);
             this.groupBox22.Controls.Add(this.label56);
-            this.groupBox22.Controls.Add(this.comboBox10);
+            this.groupBox22.Controls.Add(this.cbTypeBill);
             this.groupBox22.Controls.Add(this.label58);
             this.groupBox22.Controls.Add(this.comboBox11);
             this.groupBox22.Location = new System.Drawing.Point(689, 161);
@@ -473,18 +465,18 @@ namespace SuperMarket
             this.label56.Text = "Chủng loại";
             this.label56.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox10
+            // cbTypeBill
             // 
-            this.comboBox10.DropDownWidth = 200;
-            this.comboBox10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Items.AddRange(new object[] {
+            this.cbTypeBill.DropDownWidth = 200;
+            this.cbTypeBill.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbTypeBill.FormattingEnabled = true;
+            this.cbTypeBill.Items.AddRange(new object[] {
             "Bình thường",
             "Giảm giá"});
-            this.comboBox10.Location = new System.Drawing.Point(42, 46);
-            this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(324, 28);
-            this.comboBox10.TabIndex = 5;
+            this.cbTypeBill.Location = new System.Drawing.Point(42, 46);
+            this.cbTypeBill.Name = "cbTypeBill";
+            this.cbTypeBill.Size = new System.Drawing.Size(324, 28);
+            this.cbTypeBill.TabIndex = 5;
             // 
             // label58
             // 
@@ -1333,23 +1325,23 @@ namespace SuperMarket
             // dtgvNV
             // 
             this.dtgvNV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvNV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvNV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dtgvNV.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvNV.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvNV.DefaultCellStyle = dataGridViewCellStyle8;
             this.dtgvNV.Location = new System.Drawing.Point(6, 57);
             this.dtgvNV.Name = "dtgvNV";
             this.dtgvNV.RowTemplate.Height = 25;
@@ -1397,58 +1389,61 @@ namespace SuperMarket
             // groupBox9
             // 
             this.groupBox9.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox9.Controls.Add(this.button9);
-            this.groupBox9.Controls.Add(this.button10);
-            this.groupBox9.Controls.Add(this.button11);
+            this.groupBox9.Controls.Add(this.btnUpdateHH);
+            this.groupBox9.Controls.Add(this.btnDeleteHH);
+            this.groupBox9.Controls.Add(this.btnAddHH);
             this.groupBox9.Location = new System.Drawing.Point(660, 453);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(442, 71);
             this.groupBox9.TabIndex = 12;
             this.groupBox9.TabStop = false;
             // 
-            // button9
+            // btnUpdateHH
             // 
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button9.Location = new System.Drawing.Point(316, 15);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(120, 50);
-            this.button9.TabIndex = 7;
-            this.button9.Text = "Sửa";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnUpdateHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdateHH.Location = new System.Drawing.Point(316, 15);
+            this.btnUpdateHH.Name = "btnUpdateHH";
+            this.btnUpdateHH.Size = new System.Drawing.Size(120, 50);
+            this.btnUpdateHH.TabIndex = 7;
+            this.btnUpdateHH.Text = "Cập nhật";
+            this.btnUpdateHH.UseVisualStyleBackColor = true;
+            this.btnUpdateHH.Click += new System.EventHandler(this.btnUpdateHH_Click);
             // 
-            // button10
+            // btnDeleteHH
             // 
-            this.button10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button10.Location = new System.Drawing.Point(170, 15);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(120, 50);
-            this.button10.TabIndex = 6;
-            this.button10.Text = "Xóa";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnDeleteHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDeleteHH.Location = new System.Drawing.Point(170, 15);
+            this.btnDeleteHH.Name = "btnDeleteHH";
+            this.btnDeleteHH.Size = new System.Drawing.Size(120, 50);
+            this.btnDeleteHH.TabIndex = 6;
+            this.btnDeleteHH.Text = "Xóa";
+            this.btnDeleteHH.UseVisualStyleBackColor = true;
+            this.btnDeleteHH.Click += new System.EventHandler(this.btnDeleteHH_Click);
             // 
-            // button11
+            // btnAddHH
             // 
-            this.button11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button11.Location = new System.Drawing.Point(22, 15);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(120, 50);
-            this.button11.TabIndex = 5;
-            this.button11.Text = "Thêm";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnAddHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAddHH.Location = new System.Drawing.Point(22, 15);
+            this.btnAddHH.Name = "btnAddHH";
+            this.btnAddHH.Size = new System.Drawing.Size(120, 50);
+            this.btnAddHH.TabIndex = 5;
+            this.btnAddHH.Text = "Thêm";
+            this.btnAddHH.UseVisualStyleBackColor = true;
+            this.btnAddHH.Click += new System.EventHandler(this.btnAddHH_Click);
             // 
             // groupBox10
             // 
             this.groupBox10.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox10.Controls.Add(this.textBox19);
-            this.groupBox10.Controls.Add(this.textBox25);
-            this.groupBox10.Controls.Add(this.textBox20);
-            this.groupBox10.Controls.Add(this.textBox21);
+            this.groupBox10.Controls.Add(this.cbNameSupplierHH);
+            this.groupBox10.Controls.Add(this.HSD);
+            this.groupBox10.Controls.Add(this.NSX);
+            this.groupBox10.Controls.Add(this.cbTypeHH);
+            this.groupBox10.Controls.Add(this.textPriceSellHH);
+            this.groupBox10.Controls.Add(this.textPriceBuyHH);
             this.groupBox10.Controls.Add(this.label26);
-            this.groupBox10.Controls.Add(this.textBox22);
-            this.groupBox10.Controls.Add(this.textBox23);
-            this.groupBox10.Controls.Add(this.textBox24);
-            this.groupBox10.Controls.Add(this.textBox26);
-            this.groupBox10.Controls.Add(this.textBox27);
+            this.groupBox10.Controls.Add(this.textquantityHH);
+            this.groupBox10.Controls.Add(this.textVATHH);
+            this.groupBox10.Controls.Add(this.textNameHH);
             this.groupBox10.Controls.Add(this.label27);
             this.groupBox10.Controls.Add(this.label28);
             this.groupBox10.Controls.Add(this.label29);
@@ -1457,44 +1452,70 @@ namespace SuperMarket
             this.groupBox10.Controls.Add(this.label32);
             this.groupBox10.Controls.Add(this.label33);
             this.groupBox10.Controls.Add(this.label34);
-            this.groupBox10.Controls.Add(this.textBox28);
+            this.groupBox10.Controls.Add(this.textIDHH);
             this.groupBox10.Location = new System.Drawing.Point(660, 122);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(442, 340);
             this.groupBox10.TabIndex = 11;
             this.groupBox10.TabStop = false;
             // 
-            // textBox19
+            // cbNameSupplierHH
             // 
-            this.textBox19.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox19.Location = new System.Drawing.Point(293, 167);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(115, 27);
-            this.textBox19.TabIndex = 23;
+            this.cbNameSupplierHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbNameSupplierHH.FormattingEnabled = true;
+            this.cbNameSupplierHH.Location = new System.Drawing.Point(170, 227);
+            this.cbNameSupplierHH.Name = "cbNameSupplierHH";
+            this.cbNameSupplierHH.Size = new System.Drawing.Size(250, 28);
+            this.cbNameSupplierHH.TabIndex = 29;
             // 
-            // textBox25
+            // HSD
             // 
-            this.textBox25.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox25.Location = new System.Drawing.Point(170, 167);
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new System.Drawing.Size(115, 27);
-            this.textBox25.TabIndex = 22;
+            this.HSD.CustomFormat = "dd-MM-yyyy";
+            this.HSD.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HSD.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.HSD.Location = new System.Drawing.Point(297, 197);
+            this.HSD.Name = "HSD";
+            this.HSD.Size = new System.Drawing.Size(123, 27);
+            this.HSD.TabIndex = 28;
+            this.HSD.Value = new System.DateTime(2021, 11, 27, 0, 0, 0, 0);
             // 
-            // textBox20
+            // NSX
             // 
-            this.textBox20.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox20.Location = new System.Drawing.Point(293, 137);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(115, 27);
-            this.textBox20.TabIndex = 21;
+            this.NSX.CustomFormat = "dd-MM-yyyy";
+            this.NSX.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NSX.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.NSX.Location = new System.Drawing.Point(170, 197);
+            this.NSX.Name = "NSX";
+            this.NSX.Size = new System.Drawing.Size(123, 27);
+            this.NSX.TabIndex = 27;
+            this.NSX.Value = new System.DateTime(2021, 11, 27, 0, 0, 0, 0);
             // 
-            // textBox21
+            // cbTypeHH
             // 
-            this.textBox21.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox21.Location = new System.Drawing.Point(170, 137);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(115, 27);
-            this.textBox21.TabIndex = 20;
+            this.cbTypeHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbTypeHH.FormattingEnabled = true;
+            this.cbTypeHH.Location = new System.Drawing.Point(170, 106);
+            this.cbTypeHH.Name = "cbTypeHH";
+            this.cbTypeHH.Size = new System.Drawing.Size(250, 28);
+            this.cbTypeHH.TabIndex = 26;
+            // 
+            // textPriceSellHH
+            // 
+            this.textPriceSellHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textPriceSellHH.Location = new System.Drawing.Point(297, 137);
+            this.textPriceSellHH.Name = "textPriceSellHH";
+            this.textPriceSellHH.Size = new System.Drawing.Size(123, 27);
+            this.textPriceSellHH.TabIndex = 21;
+            this.textPriceSellHH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textPriceBuyHH
+            // 
+            this.textPriceBuyHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textPriceBuyHH.Location = new System.Drawing.Point(170, 137);
+            this.textPriceBuyHH.Name = "textPriceBuyHH";
+            this.textPriceBuyHH.Size = new System.Drawing.Size(123, 27);
+            this.textPriceBuyHH.TabIndex = 20;
+            this.textPriceBuyHH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label26
             // 
@@ -1507,45 +1528,30 @@ namespace SuperMarket
             this.label26.Text = "VAT";
             this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox22
+            // textquantityHH
             // 
-            this.textBox22.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox22.Location = new System.Drawing.Point(170, 227);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(238, 27);
-            this.textBox22.TabIndex = 18;
+            this.textquantityHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textquantityHH.Location = new System.Drawing.Point(170, 167);
+            this.textquantityHH.Name = "textquantityHH";
+            this.textquantityHH.Size = new System.Drawing.Size(250, 27);
+            this.textquantityHH.TabIndex = 17;
             // 
-            // textBox23
+            // textVATHH
             // 
-            this.textBox23.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox23.Location = new System.Drawing.Point(170, 197);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(238, 27);
-            this.textBox23.TabIndex = 17;
+            this.textVATHH.Enabled = false;
+            this.textVATHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textVATHH.Location = new System.Drawing.Point(170, 257);
+            this.textVATHH.Name = "textVATHH";
+            this.textVATHH.Size = new System.Drawing.Size(250, 27);
+            this.textVATHH.TabIndex = 16;
             // 
-            // textBox24
+            // textNameHH
             // 
-            this.textBox24.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox24.Location = new System.Drawing.Point(170, 257);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.Size = new System.Drawing.Size(238, 27);
-            this.textBox24.TabIndex = 16;
-            // 
-            // textBox26
-            // 
-            this.textBox26.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox26.Location = new System.Drawing.Point(170, 107);
-            this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(238, 27);
-            this.textBox26.TabIndex = 14;
-            // 
-            // textBox27
-            // 
-            this.textBox27.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox27.Location = new System.Drawing.Point(170, 77);
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(238, 27);
-            this.textBox27.TabIndex = 13;
+            this.textNameHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textNameHH.Location = new System.Drawing.Point(170, 77);
+            this.textNameHH.Name = "textNameHH";
+            this.textNameHH.Size = new System.Drawing.Size(250, 27);
+            this.textNameHH.TabIndex = 13;
             // 
             // label27
             // 
@@ -1553,9 +1559,9 @@ namespace SuperMarket
             this.label27.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label27.Location = new System.Drawing.Point(16, 167);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(73, 20);
+            this.label27.Size = new System.Drawing.Size(69, 20);
             this.label27.TabIndex = 12;
-            this.label27.Text = "NSX/HSD";
+            this.label27.Text = "Số lượng";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label28
@@ -1564,9 +1570,9 @@ namespace SuperMarket
             this.label28.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label28.Location = new System.Drawing.Point(16, 227);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(116, 20);
+            this.label28.Size = new System.Drawing.Size(124, 20);
             this.label28.TabIndex = 11;
-            this.label28.Text = "ID nhà cung cấp";
+            this.label28.Text = "Tên nhà cung cấp";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label29
@@ -1575,9 +1581,9 @@ namespace SuperMarket
             this.label29.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label29.Location = new System.Drawing.Point(16, 197);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(69, 20);
+            this.label29.Size = new System.Drawing.Size(73, 20);
             this.label29.TabIndex = 10;
-            this.label29.Text = "Số lượng";
+            this.label29.Text = "NSX/HSD";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label30
@@ -1597,9 +1603,9 @@ namespace SuperMarket
             this.label31.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label31.Location = new System.Drawing.Point(16, 107);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(100, 20);
+            this.label31.Size = new System.Drawing.Size(70, 20);
             this.label31.TabIndex = 8;
-            this.label31.Text = "Tên sản phẩm";
+            this.label31.Text = "Phân loại";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label32
@@ -1608,9 +1614,9 @@ namespace SuperMarket
             this.label32.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label32.Location = new System.Drawing.Point(16, 77);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(92, 20);
+            this.label32.Size = new System.Drawing.Size(100, 20);
             this.label32.TabIndex = 7;
-            this.label32.Text = "ID sản phẩm";
+            this.label32.Text = "Tên sản phẩm";
             this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label33
@@ -1619,9 +1625,9 @@ namespace SuperMarket
             this.label33.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label33.Location = new System.Drawing.Point(16, 47);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(80, 20);
+            this.label33.Size = new System.Drawing.Size(92, 20);
             this.label33.TabIndex = 6;
-            this.label33.Text = "Chủng loại";
+            this.label33.Text = "ID sản phẩm";
             this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label34
@@ -1635,150 +1641,153 @@ namespace SuperMarket
             this.label34.Text = "Thông Tin Sản Phẩm";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox28
+            // textIDHH
             // 
-            this.textBox28.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox28.Location = new System.Drawing.Point(170, 47);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(238, 27);
-            this.textBox28.TabIndex = 1;
+            this.textIDHH.Enabled = false;
+            this.textIDHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textIDHH.Location = new System.Drawing.Point(170, 47);
+            this.textIDHH.Name = "textIDHH";
+            this.textIDHH.Size = new System.Drawing.Size(250, 27);
+            this.textIDHH.TabIndex = 1;
             // 
             // groupBox11
             // 
             this.groupBox11.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox11.Controls.Add(this.textBox29);
-            this.groupBox11.Controls.Add(this.button12);
+            this.groupBox11.Controls.Add(this.btnSearchNameHH);
+            this.groupBox11.Controls.Add(this.textSearchNameHH);
+            this.groupBox11.Controls.Add(this.btnSearchTypeHH);
             this.groupBox11.Controls.Add(this.label35);
             this.groupBox11.Controls.Add(this.label36);
-            this.groupBox11.Controls.Add(this.comboBox5);
+            this.groupBox11.Controls.Add(this.cbSearchTypeHH);
             this.groupBox11.Location = new System.Drawing.Point(660, 49);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(442, 82);
             this.groupBox11.TabIndex = 10;
             this.groupBox11.TabStop = false;
             // 
-            // textBox29
+            // btnSearchNameHH
             // 
-            this.textBox29.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox29.Location = new System.Drawing.Point(192, 40);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(100, 27);
-            this.textBox29.TabIndex = 6;
+            this.btnSearchNameHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSearchNameHH.Location = new System.Drawing.Point(357, 39);
+            this.btnSearchNameHH.Name = "btnSearchNameHH";
+            this.btnSearchNameHH.Size = new System.Drawing.Size(75, 28);
+            this.btnSearchNameHH.TabIndex = 7;
+            this.btnSearchNameHH.Text = "Tìm";
+            this.btnSearchNameHH.UseVisualStyleBackColor = true;
+            this.btnSearchNameHH.Click += new System.EventHandler(this.btnSearchNameHH_Click);
             // 
-            // button12
+            // textSearchNameHH
             // 
-            this.button12.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button12.Location = new System.Drawing.Point(333, 39);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(75, 28);
-            this.button12.TabIndex = 5;
-            this.button12.Text = "Tìm";
-            this.button12.UseVisualStyleBackColor = true;
+            this.textSearchNameHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textSearchNameHH.Location = new System.Drawing.Point(225, 39);
+            this.textSearchNameHH.Name = "textSearchNameHH";
+            this.textSearchNameHH.Size = new System.Drawing.Size(126, 27);
+            this.textSearchNameHH.TabIndex = 6;
+            // 
+            // btnSearchTypeHH
+            // 
+            this.btnSearchTypeHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSearchTypeHH.Location = new System.Drawing.Point(133, 38);
+            this.btnSearchTypeHH.Name = "btnSearchTypeHH";
+            this.btnSearchTypeHH.Size = new System.Drawing.Size(75, 28);
+            this.btnSearchTypeHH.TabIndex = 5;
+            this.btnSearchTypeHH.Text = "Tìm";
+            this.btnSearchTypeHH.UseVisualStyleBackColor = true;
+            this.btnSearchTypeHH.Click += new System.EventHandler(this.btnSearchTypeHH_Click);
             // 
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(192, 16);
+            this.label35.Location = new System.Drawing.Point(225, 16);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(25, 20);
+            this.label35.Size = new System.Drawing.Size(106, 20);
             this.label35.TabIndex = 4;
-            this.label35.Text = "ID";
+            this.label35.Text = "Tên sản phẩm";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label36
             // 
             this.label36.AutoSize = true;
             this.label36.CausesValidation = false;
-            this.label36.Location = new System.Drawing.Point(36, 16);
+            this.label36.Location = new System.Drawing.Point(6, 16);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(83, 20);
+            this.label36.Size = new System.Drawing.Size(73, 20);
             this.label36.TabIndex = 4;
-            this.label36.Text = "Chủng loại";
+            this.label36.Text = "Phân loại";
             this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox5
+            // cbSearchTypeHH
             // 
-            this.comboBox5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
+            this.cbSearchTypeHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbSearchTypeHH.FormattingEnabled = true;
+            this.cbSearchTypeHH.Items.AddRange(new object[] {
             "Tồn kho",
             "Hết hạn",
             "Giảm giá",
             "Tiềm năng"});
-            this.comboBox5.Location = new System.Drawing.Point(36, 39);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 28);
-            this.comboBox5.TabIndex = 0;
+            this.cbSearchTypeHH.Location = new System.Drawing.Point(6, 39);
+            this.cbSearchTypeHH.Name = "cbSearchTypeHH";
+            this.cbSearchTypeHH.Size = new System.Drawing.Size(121, 28);
+            this.cbSearchTypeHH.TabIndex = 0;
             // 
             // groupBox12
             // 
             this.groupBox12.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox12.Controls.Add(this.btnRefreshHH);
+            this.groupBox12.Controls.Add(this.dtgvHH);
             this.groupBox12.Controls.Add(this.label37);
-            this.groupBox12.Controls.Add(this.listView3);
             this.groupBox12.Location = new System.Drawing.Point(6, 49);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(648, 481);
             this.groupBox12.TabIndex = 9;
             this.groupBox12.TabStop = false;
             // 
+            // btnRefreshHH
+            // 
+            this.btnRefreshHH.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnRefreshHH.Location = new System.Drawing.Point(567, 31);
+            this.btnRefreshHH.Name = "btnRefreshHH";
+            this.btnRefreshHH.Size = new System.Drawing.Size(75, 28);
+            this.btnRefreshHH.TabIndex = 8;
+            this.btnRefreshHH.Text = "Refresh";
+            this.btnRefreshHH.UseVisualStyleBackColor = true;
+            this.btnRefreshHH.Click += new System.EventHandler(this.btnRefreshHH_Click);
+            // 
+            // dtgvHH
+            // 
+            this.dtgvHH.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvHH.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dtgvHH.ColumnHeadersHeight = 30;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvHH.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dtgvHH.Location = new System.Drawing.Point(6, 68);
+            this.dtgvHH.Name = "dtgvHH";
+            this.dtgvHH.RowTemplate.Height = 25;
+            this.dtgvHH.Size = new System.Drawing.Size(636, 401);
+            this.dtgvHH.TabIndex = 6;
+            // 
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(6, 16);
+            this.label37.Location = new System.Drawing.Point(6, 35);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(149, 20);
             this.label37.TabIndex = 3;
             this.label37.Text = "Danh mục hàng hóa";
             this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // listView3
-            // 
-            this.listView3.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.listView3.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader12,
-            this.columnHeader13,
-            this.columnHeader14,
-            this.columnHeader15,
-            this.columnHeader16});
-            this.listView3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.listView3.FullRowSelect = true;
-            this.listView3.GridLines = true;
-            this.listView3.HideSelection = false;
-            this.listView3.HotTracking = true;
-            this.listView3.HoverSelection = true;
-            this.listView3.LabelWrap = false;
-            this.listView3.Location = new System.Drawing.Point(6, 39);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(636, 436);
-            this.listView3.TabIndex = 3;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            this.listView3.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "Chủng loại";
-            this.columnHeader12.Width = 150;
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "ID";
-            this.columnHeader13.Width = 50;
-            // 
-            // columnHeader14
-            // 
-            this.columnHeader14.Text = "Tên sản phẩm";
-            this.columnHeader14.Width = 200;
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "Số lượng ";
-            this.columnHeader15.Width = 100;
-            // 
-            // columnHeader16
-            // 
-            this.columnHeader16.Text = "Giá bán";
-            this.columnHeader16.Width = 100;
             // 
             // lbHH
             // 
@@ -1795,9 +1804,6 @@ namespace SuperMarket
             // 
             this.tabNCC.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.tabNCC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabNCC.Controls.Add(this.groupBox13);
-            this.tabNCC.Controls.Add(this.groupBox14);
-            this.tabNCC.Controls.Add(this.groupBox15);
             this.tabNCC.Controls.Add(this.groupBox16);
             this.tabNCC.Controls.Add(this.lbNCC);
             this.tabNCC.ImageIndex = 6;
@@ -1808,22 +1814,66 @@ namespace SuperMarket
             this.tabNCC.TabIndex = 5;
             this.tabNCC.Text = "Nhà Cung Cấp";
             // 
-            // groupBox13
+            // groupBox16
             // 
-            this.groupBox13.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox13.Controls.Add(this.btnUpdateNCC);
-            this.groupBox13.Controls.Add(this.btnDeleteNCC);
-            this.groupBox13.Controls.Add(this.btnAddNCC);
-            this.groupBox13.Location = new System.Drawing.Point(660, 453);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(442, 71);
-            this.groupBox13.TabIndex = 16;
-            this.groupBox13.TabStop = false;
+            this.groupBox16.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox16.Controls.Add(this.btnSearchNCC);
+            this.groupBox16.Controls.Add(this.textSearchNCC);
+            this.groupBox16.Controls.Add(this.label46);
+            this.groupBox16.Controls.Add(this.btnUpdateNCC);
+            this.groupBox16.Controls.Add(this.btnDeleteNCC);
+            this.groupBox16.Controls.Add(this.btnRefreshNCC);
+            this.groupBox16.Controls.Add(this.btnAddNCC);
+            this.groupBox16.Controls.Add(this.textAddNCC);
+            this.groupBox16.Controls.Add(this.dtgvNCC);
+            this.groupBox16.Controls.Add(this.label48);
+            this.groupBox16.Controls.Add(this.textSDTNCC);
+            this.groupBox16.Controls.Add(this.label45);
+            this.groupBox16.Controls.Add(this.textNameNCC);
+            this.groupBox16.Controls.Add(this.textIDNCC);
+            this.groupBox16.Controls.Add(this.label41);
+            this.groupBox16.Controls.Add(this.label44);
+            this.groupBox16.Controls.Add(this.label42);
+            this.groupBox16.Controls.Add(this.label43);
+            this.groupBox16.Location = new System.Drawing.Point(6, 49);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(1097, 262);
+            this.groupBox16.TabIndex = 13;
+            this.groupBox16.TabStop = false;
+            // 
+            // btnSearchNCC
+            // 
+            this.btnSearchNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSearchNCC.Location = new System.Drawing.Point(990, 23);
+            this.btnSearchNCC.Name = "btnSearchNCC";
+            this.btnSearchNCC.Size = new System.Drawing.Size(75, 28);
+            this.btnSearchNCC.TabIndex = 5;
+            this.btnSearchNCC.Text = "Tìm";
+            this.btnSearchNCC.UseVisualStyleBackColor = true;
+            this.btnSearchNCC.Click += new System.EventHandler(this.btnSearchNCC_Click);
+            // 
+            // textSearchNCC
+            // 
+            this.textSearchNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textSearchNCC.Location = new System.Drawing.Point(701, 23);
+            this.textSearchNCC.Name = "textSearchNCC";
+            this.textSearchNCC.Size = new System.Drawing.Size(238, 27);
+            this.textSearchNCC.TabIndex = 6;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(547, 26);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(130, 20);
+            this.label46.TabIndex = 4;
+            this.label46.Text = "Tên nhà cung cấp";
+            this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnUpdateNCC
             // 
             this.btnUpdateNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnUpdateNCC.Location = new System.Drawing.Point(316, 15);
+            this.btnUpdateNCC.Location = new System.Drawing.Point(971, 195);
             this.btnUpdateNCC.Name = "btnUpdateNCC";
             this.btnUpdateNCC.Size = new System.Drawing.Size(120, 50);
             this.btnUpdateNCC.TabIndex = 7;
@@ -1834,7 +1884,7 @@ namespace SuperMarket
             // btnDeleteNCC
             // 
             this.btnDeleteNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnDeleteNCC.Location = new System.Drawing.Point(170, 15);
+            this.btnDeleteNCC.Location = new System.Drawing.Point(971, 140);
             this.btnDeleteNCC.Name = "btnDeleteNCC";
             this.btnDeleteNCC.Size = new System.Drawing.Size(120, 50);
             this.btnDeleteNCC.TabIndex = 6;
@@ -1842,201 +1892,10 @@ namespace SuperMarket
             this.btnDeleteNCC.UseVisualStyleBackColor = true;
             this.btnDeleteNCC.Click += new System.EventHandler(this.btnDeleteNCC_Click);
             // 
-            // btnAddNCC
-            // 
-            this.btnAddNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAddNCC.Location = new System.Drawing.Point(22, 15);
-            this.btnAddNCC.Name = "btnAddNCC";
-            this.btnAddNCC.Size = new System.Drawing.Size(120, 50);
-            this.btnAddNCC.TabIndex = 5;
-            this.btnAddNCC.Text = "Thêm";
-            this.btnAddNCC.UseVisualStyleBackColor = true;
-            this.btnAddNCC.Click += new System.EventHandler(this.btnAddNCC_Click);
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox14.Controls.Add(this.textGoodsNCC);
-            this.groupBox14.Controls.Add(this.textAddNCC);
-            this.groupBox14.Controls.Add(this.textSDTNCC);
-            this.groupBox14.Controls.Add(this.textNameNCC);
-            this.groupBox14.Controls.Add(this.label38);
-            this.groupBox14.Controls.Add(this.label41);
-            this.groupBox14.Controls.Add(this.label42);
-            this.groupBox14.Controls.Add(this.label43);
-            this.groupBox14.Controls.Add(this.label44);
-            this.groupBox14.Controls.Add(this.label45);
-            this.groupBox14.Controls.Add(this.textIDNCC);
-            this.groupBox14.Location = new System.Drawing.Point(660, 122);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(442, 340);
-            this.groupBox14.TabIndex = 15;
-            this.groupBox14.TabStop = false;
-            // 
-            // textGoodsNCC
-            // 
-            this.textGoodsNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textGoodsNCC.Location = new System.Drawing.Point(170, 212);
-            this.textGoodsNCC.Name = "textGoodsNCC";
-            this.textGoodsNCC.Size = new System.Drawing.Size(238, 27);
-            this.textGoodsNCC.TabIndex = 18;
-            // 
-            // textAddNCC
-            // 
-            this.textAddNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textAddNCC.Location = new System.Drawing.Point(170, 182);
-            this.textAddNCC.Name = "textAddNCC";
-            this.textAddNCC.Size = new System.Drawing.Size(238, 27);
-            this.textAddNCC.TabIndex = 17;
-            // 
-            // textSDTNCC
-            // 
-            this.textSDTNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textSDTNCC.Location = new System.Drawing.Point(170, 152);
-            this.textSDTNCC.Name = "textSDTNCC";
-            this.textSDTNCC.Size = new System.Drawing.Size(238, 27);
-            this.textSDTNCC.TabIndex = 14;
-            // 
-            // textNameNCC
-            // 
-            this.textNameNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textNameNCC.Location = new System.Drawing.Point(170, 122);
-            this.textNameNCC.Name = "textNameNCC";
-            this.textNameNCC.Size = new System.Drawing.Size(238, 27);
-            this.textNameNCC.TabIndex = 13;
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label38.Location = new System.Drawing.Point(16, 212);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(136, 20);
-            this.label38.TabIndex = 12;
-            this.label38.Text = "Mặt hàng cung cấp";
-            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label41.Location = new System.Drawing.Point(16, 182);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(55, 20);
-            this.label41.TabIndex = 9;
-            this.label41.Text = "Địa chỉ";
-            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label42.Location = new System.Drawing.Point(16, 152);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(36, 20);
-            this.label42.TabIndex = 8;
-            this.label42.Text = "SĐT";
-            this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label43.Location = new System.Drawing.Point(16, 122);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(124, 20);
-            this.label43.TabIndex = 7;
-            this.label43.Text = "Tên nhà cung cấp";
-            this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label44.Location = new System.Drawing.Point(16, 92);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(116, 20);
-            this.label44.TabIndex = 6;
-            this.label44.Text = "ID nhà cung cấp";
-            this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label45.Location = new System.Drawing.Point(111, 12);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(236, 25);
-            this.label45.TabIndex = 4;
-            this.label45.Text = "Thông Tin Nhà Cung Cấp";
-            this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textIDNCC
-            // 
-            this.textIDNCC.Enabled = false;
-            this.textIDNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textIDNCC.Location = new System.Drawing.Point(170, 92);
-            this.textIDNCC.Name = "textIDNCC";
-            this.textIDNCC.Size = new System.Drawing.Size(238, 27);
-            this.textIDNCC.TabIndex = 1;
-            // 
-            // groupBox15
-            // 
-            this.groupBox15.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox15.Controls.Add(this.textSearchNCC);
-            this.groupBox15.Controls.Add(this.btnSearchNCC);
-            this.groupBox15.Controls.Add(this.label46);
-            this.groupBox15.Location = new System.Drawing.Point(660, 49);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(442, 82);
-            this.groupBox15.TabIndex = 14;
-            this.groupBox15.TabStop = false;
-            // 
-            // textSearchNCC
-            // 
-            this.textSearchNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textSearchNCC.Location = new System.Drawing.Point(22, 40);
-            this.textSearchNCC.Name = "textSearchNCC";
-            this.textSearchNCC.Size = new System.Drawing.Size(288, 27);
-            this.textSearchNCC.TabIndex = 6;
-            // 
-            // btnSearchNCC
-            // 
-            this.btnSearchNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSearchNCC.Location = new System.Drawing.Point(333, 39);
-            this.btnSearchNCC.Name = "btnSearchNCC";
-            this.btnSearchNCC.Size = new System.Drawing.Size(75, 28);
-            this.btnSearchNCC.TabIndex = 5;
-            this.btnSearchNCC.Text = "Tìm";
-            this.btnSearchNCC.UseVisualStyleBackColor = true;
-            this.btnSearchNCC.Click += new System.EventHandler(this.btnSearchNCC_Click);
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(22, 17);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(130, 20);
-            this.label46.TabIndex = 4;
-            this.label46.Text = "Tên nhà cung cấp";
-            this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // groupBox16
-            // 
-            this.groupBox16.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox16.Controls.Add(this.btnRefreshNCC);
-            this.groupBox16.Controls.Add(this.dtgvNCC);
-            this.groupBox16.Controls.Add(this.label48);
-            this.groupBox16.Location = new System.Drawing.Point(6, 49);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(648, 481);
-            this.groupBox16.TabIndex = 13;
-            this.groupBox16.TabStop = false;
-            // 
             // btnRefreshNCC
             // 
             this.btnRefreshNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnRefreshNCC.Location = new System.Drawing.Point(567, 26);
+            this.btnRefreshNCC.Location = new System.Drawing.Point(435, 26);
             this.btnRefreshNCC.Name = "btnRefreshNCC";
             this.btnRefreshNCC.Size = new System.Drawing.Size(75, 28);
             this.btnRefreshNCC.TabIndex = 8;
@@ -2044,30 +1903,49 @@ namespace SuperMarket
             this.btnRefreshNCC.UseVisualStyleBackColor = true;
             this.btnRefreshNCC.Click += new System.EventHandler(this.btnRefreshNCC_Click);
             // 
+            // btnAddNCC
+            // 
+            this.btnAddNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAddNCC.Location = new System.Drawing.Point(971, 87);
+            this.btnAddNCC.Name = "btnAddNCC";
+            this.btnAddNCC.Size = new System.Drawing.Size(120, 50);
+            this.btnAddNCC.TabIndex = 5;
+            this.btnAddNCC.Text = "Thêm";
+            this.btnAddNCC.UseVisualStyleBackColor = true;
+            this.btnAddNCC.Click += new System.EventHandler(this.btnAddNCC_Click);
+            // 
+            // textAddNCC
+            // 
+            this.textAddNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textAddNCC.Location = new System.Drawing.Point(701, 200);
+            this.textAddNCC.Name = "textAddNCC";
+            this.textAddNCC.Size = new System.Drawing.Size(238, 27);
+            this.textAddNCC.TabIndex = 17;
+            // 
             // dtgvNCC
             // 
             this.dtgvNCC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvNCC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvNCC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dtgvNCC.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvNCC.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvNCC.DefaultCellStyle = dataGridViewCellStyle12;
             this.dtgvNCC.Location = new System.Drawing.Point(6, 60);
             this.dtgvNCC.Name = "dtgvNCC";
             this.dtgvNCC.RowTemplate.Height = 25;
-            this.dtgvNCC.Size = new System.Drawing.Size(636, 409);
+            this.dtgvNCC.Size = new System.Drawing.Size(504, 185);
             this.dtgvNCC.TabIndex = 6;
             // 
             // label48
@@ -2079,6 +1957,86 @@ namespace SuperMarket
             this.label48.TabIndex = 3;
             this.label48.Text = "Danh mục nhà cung cấp";
             this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textSDTNCC
+            // 
+            this.textSDTNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textSDTNCC.Location = new System.Drawing.Point(701, 170);
+            this.textSDTNCC.Name = "textSDTNCC";
+            this.textSDTNCC.Size = new System.Drawing.Size(238, 27);
+            this.textSDTNCC.TabIndex = 14;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label45.Location = new System.Drawing.Point(627, 67);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(236, 25);
+            this.label45.TabIndex = 4;
+            this.label45.Text = "Thông Tin Nhà Cung Cấp";
+            this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textNameNCC
+            // 
+            this.textNameNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textNameNCC.Location = new System.Drawing.Point(701, 140);
+            this.textNameNCC.Name = "textNameNCC";
+            this.textNameNCC.Size = new System.Drawing.Size(238, 27);
+            this.textNameNCC.TabIndex = 13;
+            // 
+            // textIDNCC
+            // 
+            this.textIDNCC.Enabled = false;
+            this.textIDNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textIDNCC.Location = new System.Drawing.Point(701, 110);
+            this.textIDNCC.Name = "textIDNCC";
+            this.textIDNCC.Size = new System.Drawing.Size(238, 27);
+            this.textIDNCC.TabIndex = 1;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label41.Location = new System.Drawing.Point(547, 200);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(55, 20);
+            this.label41.TabIndex = 9;
+            this.label41.Text = "Địa chỉ";
+            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label44.Location = new System.Drawing.Point(547, 110);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(116, 20);
+            this.label44.TabIndex = 6;
+            this.label44.Text = "ID nhà cung cấp";
+            this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label42.Location = new System.Drawing.Point(547, 170);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(36, 20);
+            this.label42.TabIndex = 8;
+            this.label42.Text = "SĐT";
+            this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label43.Location = new System.Drawing.Point(547, 140);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(124, 20);
+            this.label43.TabIndex = 7;
+            this.label43.Text = "Tên nhà cung cấp";
+            this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbNCC
             // 
@@ -2639,13 +2597,9 @@ namespace SuperMarket
             this.groupBox11.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvHH)).EndInit();
             this.tabNCC.ResumeLayout(false);
             this.tabNCC.PerformLayout();
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvNCC)).EndInit();
@@ -2735,18 +2689,16 @@ namespace SuperMarket
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnUpdateHH;
+        private System.Windows.Forms.Button btnDeleteHH;
+        private System.Windows.Forms.Button btnAddHH;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.TextBox textBox21;
+        private System.Windows.Forms.TextBox textPriceSellHH;
+        private System.Windows.Forms.TextBox textPriceBuyHH;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox22;
-        private System.Windows.Forms.TextBox textBox23;
-        private System.Windows.Forms.TextBox textBox24;
-        private System.Windows.Forms.TextBox textBox26;
-        private System.Windows.Forms.TextBox textBox27;
+        private System.Windows.Forms.TextBox textquantityHH;
+        private System.Windows.Forms.TextBox textVATHH;
+        private System.Windows.Forms.TextBox textNameHH;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
@@ -2755,40 +2707,27 @@ namespace SuperMarket
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.TextBox textBox28;
+        private System.Windows.Forms.TextBox textIDHH;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button btnSearchTypeHH;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox cbSearchTypeHH;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.ListView listView3;
-        private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ColumnHeader columnHeader13;
-        private System.Windows.Forms.ColumnHeader columnHeader14;
-        private System.Windows.Forms.ColumnHeader columnHeader15;
-        private System.Windows.Forms.ColumnHeader columnHeader16;
-        private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.TextBox textBox25;
-        private System.Windows.Forms.TextBox textBox29;
-        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.TextBox textSearchNameHH;
         private System.Windows.Forms.Button btnUpdateNCC;
         private System.Windows.Forms.Button btnDeleteNCC;
         private System.Windows.Forms.Button btnAddNCC;
-        private System.Windows.Forms.GroupBox groupBox14;
-        private System.Windows.Forms.TextBox textGoodsNCC;
         private System.Windows.Forms.TextBox textAddNCC;
         private System.Windows.Forms.TextBox textSDTNCC;
         private System.Windows.Forms.TextBox textNameNCC;
-        private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.TextBox textIDNCC;
-        private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.TextBox textSearchNCC;
         private System.Windows.Forms.Button btnSearchNCC;
         private System.Windows.Forms.Label label46;
@@ -2845,7 +2784,7 @@ namespace SuperMarket
         private System.Windows.Forms.ColumnHeader columnHeader35;
         private System.Windows.Forms.GroupBox groupBox22;
         private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.ComboBox comboBox10;
+        private System.Windows.Forms.ComboBox cbTypeBill;
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.ComboBox comboBox11;
         private System.Windows.Forms.Label label59;
@@ -2876,6 +2815,13 @@ namespace SuperMarket
         private System.Windows.Forms.ComboBox cbOfficeNV;
         private System.Windows.Forms.Button btnRefreshNCC;
         private System.Windows.Forms.DataGridView dtgvNCC;
+        private System.Windows.Forms.DateTimePicker HSD;
+        private System.Windows.Forms.DateTimePicker NSX;
+        private System.Windows.Forms.ComboBox cbTypeHH;
+        private System.Windows.Forms.Button btnSearchNameHH;
+        private System.Windows.Forms.Button btnRefreshHH;
+        private System.Windows.Forms.DataGridView dtgvHH;
+        private System.Windows.Forms.ComboBox cbNameSupplierHH;
     }
 }
 

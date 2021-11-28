@@ -13,21 +13,18 @@ namespace SuperMarket.DTO
         private string nameSupplier;
         private string addressSupplier;
         private string phoneSupplier;
-        private string nameGoods;
 
         public int Id { get => id; set => id = value; }
         public string NameSupplier { get => nameSupplier; set => nameSupplier = value; }
         public string AddressSupplier { get => addressSupplier; set => addressSupplier = value; }
         public string PhoneSupplier { get => phoneSupplier; set => phoneSupplier = value; }
-        public string NameGoods { get => nameGoods; set => nameGoods = value; }
 
-        public Supplier(int id, string nameSupplier, string addressSupplier, string phoneSupplier, string nameGoods)
+        public Supplier(int id, string nameSupplier, string addressSupplier, string phoneSupplier)
         {
             this.Id = id;
             this.NameSupplier = nameSupplier;
             this.AddressSupplier = addressSupplier;
             this.PhoneSupplier = phoneSupplier;
-            this.NameGoods = nameGoods;
         }
         public Supplier(DataRow row)
         {
@@ -35,7 +32,6 @@ namespace SuperMarket.DTO
             this.NameSupplier = row["nameSupplier"].ToString();
             this.AddressSupplier = row["addressSupplier"].ToString();
             this.PhoneSupplier = row["phoneSupplier"].ToString();
-            this.NameGoods = row["nameGoods"].ToString();
         }
     }
 }
