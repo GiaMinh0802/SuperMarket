@@ -301,6 +301,7 @@ namespace SuperMarket
             this.tabcontrol.Name = "tabcontrol";
             this.tabcontrol.SelectedIndex = 0;
             this.tabcontrol.Size = new System.Drawing.Size(1121, 596);
+            this.tabcontrol.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabcontrol.TabIndex = 0;
             // 
             // tabTT
@@ -488,7 +489,7 @@ namespace SuperMarket
             this.dayBill.Name = "dayBill";
             this.dayBill.Size = new System.Drawing.Size(243, 27);
             this.dayBill.TabIndex = 28;
-            this.dayBill.Value = new System.DateTime(2021, 11, 29, 11, 7, 5, 494);
+            this.dayBill.Value = new System.DateTime(2021, 11, 30, 0, 48, 36, 314);
             // 
             // cbPriceBill
             // 
@@ -960,9 +961,9 @@ namespace SuperMarket
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(35, 16);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 20);
+            this.label4.Size = new System.Drawing.Size(100, 20);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Họ tên";
+            this.label4.Text = "Số điện thoại";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textSearchKH

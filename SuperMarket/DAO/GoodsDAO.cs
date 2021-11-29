@@ -87,7 +87,7 @@ namespace SuperMarket.DAO
         public List<Goods> SearchGoodsByType(string type)
         {
             List<Goods> list = new List<Goods>();
-            string query = String.Format("SELECT * FROM dbo.Goods WHERE typeGoods = N'{0}'", type);
+            string query = String.Format("SELECT * FROM dbo.Goods WHERE typeGoods = N'{0}' AND quantityGoods > 0", type);
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {

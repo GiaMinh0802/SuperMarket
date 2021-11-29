@@ -34,7 +34,7 @@ namespace SuperMarket.DAO
         public List<Customer> SearchCustomerByPhone(string phone)
         {
             List<Customer> list = new List<Customer>();
-            string query = String.Format("SELECT * FROM dbo.Customer WHERE phoneCustomer = '{0}'", phone);
+            string query = String.Format("SELECT * FROM dbo.Customer WHERE phoneCustomer LIKE N'%' + '{0}' + '%'", phone);
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {

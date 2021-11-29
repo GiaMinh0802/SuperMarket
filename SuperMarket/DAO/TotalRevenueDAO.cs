@@ -47,18 +47,26 @@ namespace SuperMarket.DAO
                 return false;
             }
         }
-        //public bool DeleteBill(string nameGoods)
-        //{
-        //    try
-        //    {
-        //        string query = String.Format("DELETE dbo.BillIN WHERE nameGoods = N'{0}'", nameGoods);
-        //        int result = DataProvider.Instance.ExecuteNonQuery(query);
-        //        return result > 0;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
+        public bool RefreshRevenue()
+        {
+            //try
+            //{
+                string query = "SELECT nameGoods, priceOut, SUM(countGoods) AS countGoods, SUM(total) AS total, dateBill " +
+                "INTO #temp " +
+                "FROM dbo.TotalRevenue " +
+                "GROUP BY nameGoods, priceOut, dateBill " +
+                "DELETE FROM dbo.TotalRevenue " +
+                "INSERT INTO dbo.TotalRevenue(nameGoods,priceOut,countGoods,total,dateBill) " +
+                "SELECT nameGoods, priceOut, countGoods, total, dateBill " +
+                "FROM #temp " +
+                "DROP TABLE #temp";
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            //}
+            //catch
+            //{
+            //    return false;
+            //}
+        }
     }
 }

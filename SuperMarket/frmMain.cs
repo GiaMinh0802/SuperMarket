@@ -103,9 +103,9 @@ namespace SuperMarket
             else
                 return "Kim Cương";
         }
-        List<Customer> SearchCustomerByName(string name)
+        List<Customer> SearchCustomerByPhone(string phone)
         {
-            List<Customer> listCustomer = CustomerDAO.Instance.SearchCustomerByName(name);
+            List<Customer> listCustomer = CustomerDAO.Instance.SearchCustomerByPhone(phone);
             return listCustomer;
         }
         private void btnAddKH_Click(object sender, EventArgs e)
@@ -163,7 +163,7 @@ namespace SuperMarket
         }
         private void btnSearchKH_Click(object sender, EventArgs e)
         {
-            listKH.DataSource = SearchCustomerByName(textSearchKH.Text);
+            listKH.DataSource = SearchCustomerByPhone(textSearchKH.Text);
         }
         private void btnrefreshKH_Click(object sender, EventArgs e)
         {
@@ -451,6 +451,7 @@ namespace SuperMarket
             {
                 MessageBox.Show("Thêm thành công");
                 LoadListHH();
+                LoadTypeGoodsBill(cbTypeBill);
             }
             else
             {
@@ -472,6 +473,7 @@ namespace SuperMarket
             {
                 MessageBox.Show("Cập nhật thành công");
                 LoadListHH();
+                LoadTypeGoodsBill(cbTypeBill);
             }
             else
             {
@@ -485,6 +487,7 @@ namespace SuperMarket
             {
                 MessageBox.Show("Xóa thành công");
                 LoadListHH();
+                LoadTypeGoodsBill(cbTypeBill);
             }
             else
             {
@@ -527,6 +530,10 @@ namespace SuperMarket
             }
             textTotalBill.Text = total.ToString();
             textTotalBill.Text = decimal.Parse(textTotalBill.Text.Replace(",", ".")).ToString("0,0.##");
+            if (textTotalBill.Text == "00")
+            {
+                textTotalBill.Text = "0";
+            }    
         }
         void Discount()
         {
@@ -534,6 +541,10 @@ namespace SuperMarket
             discount = total * DiscountbyRank(rank)/100;
             textDiscount.Text = discount.ToString();
             textDiscount.Text = decimal.Parse(textDiscount.Text.Replace(",", ".")).ToString("0,0.##");
+            if (textDiscount.Text == "00")
+            {
+                textDiscount.Text = "0";
+            }
         }
         void Pay()
         {
@@ -549,6 +560,10 @@ namespace SuperMarket
         {
             cbGoodsBill.DataSource = GoodsDAO.Instance.SearchGoodsByType(type); 
             cbGoodsBill.DisplayMember = "nameGoods";
+            if (cbGoodsBill.Items.Count == 0)
+            {
+                cbGoodsBill.Text = "";
+            }    
         }
         void LoadPriceByGoods(string name)
         {
@@ -644,6 +659,7 @@ namespace SuperMarket
             string date = dayBill.Value.ToString("yyyMMdd");
             bool check = false;
             int countcurrent = 0;
+            int quantityHH = 0;
             int n = dtgvBill.Rows.Count;
             for (int i=0; i < n; i++)
             {
@@ -653,38 +669,54 @@ namespace SuperMarket
                     countcurrent = int.Parse(dtgvBill.Rows[i].Cells["CountGoods"].Value.ToString());
                     break;
                 }    
-            }    
+            }
+            n = dtgvHH.Rows.Count;
+            for (int i=0; i<n; i++)
+            {
+                if (nameGoods == dtgvHH.Rows[i].Cells["NameGoods"].Value.ToString())
+                {
+                    quantityHH = int.Parse(dtgvHH.Rows[i].Cells["QuantityGoods"].Value.ToString());
+                    break;
+                }
+            }
             if (check)
             {
-                if (countcurrent + count == 0)
+                if ((quantityHH - count) >= 0)
                 {
-                    if (BillInDAO.Instance.DeleteBill(nameGoods))
+                    if (countcurrent + count == 0)
                     {
-                        LoadListBill();
-                        Total();
-                        if (GoodsDAO.Instance.UpdateCountGoods(nameGoods, count))
+                        if (BillInDAO.Instance.DeleteBill(nameGoods))
                         {
-                            LoadListHH();
+                            LoadListBill();
+                            Total();
+                            if (GoodsDAO.Instance.UpdateCountGoods(nameGoods, count))
+                            {
+                                LoadListHH();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Lỗi thêm sản phẩm");
+                            }
                         }
                         else
                         {
                             MessageBox.Show("Lỗi thêm sản phẩm");
                         }
                     }
-                    else
+                    else if (countcurrent + count > 0)
                     {
-                        MessageBox.Show("Lỗi thêm sản phẩm");
-                    }
-                }
-                else if (countcurrent + count > 0)
-                {
-                    if (BillInDAO.Instance.MergeBill(nameGoods, count, total))
-                    {
-                        LoadListBill();
-                        Total();
-                        if (GoodsDAO.Instance.UpdateCountGoods(nameGoods, count))
+                        if (BillInDAO.Instance.MergeBill(nameGoods, count, total))
                         {
-                            LoadListHH();
+                            LoadListBill();
+                            Total();
+                            if (GoodsDAO.Instance.UpdateCountGoods(nameGoods, count))
+                            {
+                                LoadListHH();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Lỗi thêm sản phẩm");
+                            }
                         }
                         else
                         {
@@ -698,18 +730,32 @@ namespace SuperMarket
                 }
                 else
                 {
-                    MessageBox.Show("Lỗi thêm sản phẩm");
-                }
+                    if (quantityHH == 0)
+                    {
+                        MessageBox.Show("Sản phẩm này đã hết hàng");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sản phẩm này chỉ còn " + (quantityHH).ToString() + " sản phẩm");
+                    }
+                }    
             }
             else
             {
-                if (BillInDAO.Instance.InsertBill(nameGoods, price, count, total, date))
+                if ((quantityHH - count) >= 0)
                 {
-                    LoadListBill();
-                    Total();
-                    if (GoodsDAO.Instance.UpdateCountGoods(nameGoods, count))
+                    if (BillInDAO.Instance.InsertBill(nameGoods, price, count, total, date))
                     {
-                        LoadListHH();
+                        LoadListBill();
+                        Total();
+                        if (GoodsDAO.Instance.UpdateCountGoods(nameGoods, count))
+                        {
+                            LoadListHH();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lỗi thêm sản phẩm");
+                        }
                     }
                     else
                     {
@@ -718,8 +764,15 @@ namespace SuperMarket
                 }
                 else
                 {
-                    MessageBox.Show("Lỗi thêm sản phẩm");
-                }   
+                    if (quantityHH == 0)
+                    {
+                        MessageBox.Show("Sản phẩm này đã hết hàng");
+                    }   
+                    else
+                    {
+                        MessageBox.Show("Sản phẩm này chỉ còn " + (quantityHH).ToString() + " sản phẩm");
+                    }    
+                }
             }    
         }
         private void btnThanhtoanBill_Click(object sender, EventArgs e)
@@ -787,6 +840,17 @@ namespace SuperMarket
             {
                 MessageBox.Show("Lỗi thanh toán không thành công");
             }
+            if (TotalRevenueDAO.Instance.RefreshRevenue())
+            {
+                LoadListRevenue();
+                LoadListBill();
+                Total();
+            }   
+            else
+            {
+                MessageBox.Show("Lỗi thanh toán không thành công");
+            }
+            textTotalBill.Text = "0";
         }
         #endregion
         #region Doanh thu 
@@ -806,9 +870,7 @@ namespace SuperMarket
             dtgvRevenue.Columns["DateBill"].Width = 100;
             dtgvRevenue.Columns["DateBill"].DefaultCellStyle.Format = "dd/MM/yyy";
         }
-
+        
         #endregion
-
-
     }
 }
