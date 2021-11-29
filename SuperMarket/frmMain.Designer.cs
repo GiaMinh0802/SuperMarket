@@ -31,6 +31,12 @@ namespace SuperMarket
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fMain));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -43,27 +49,31 @@ namespace SuperMarket
             this.lbTT = new System.Windows.Forms.Label();
             this.tabHD = new System.Windows.Forms.TabPage();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
-            this.textBox36 = new System.Windows.Forms.TextBox();
-            this.button22 = new System.Windows.Forms.Button();
-            this.textBox33 = new System.Windows.Forms.TextBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.textPay = new System.Windows.Forms.TextBox();
+            this.textDiscount = new System.Windows.Forms.TextBox();
+            this.cbNameKHBill = new System.Windows.Forms.ComboBox();
+            this.cbSDTKHBill = new System.Windows.Forms.ComboBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dayBill = new System.Windows.Forms.DateTimePicker();
+            this.cbPriceBill = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textTotalBill = new System.Windows.Forms.TextBox();
+            this.btnThanhtoanBill = new System.Windows.Forms.Button();
             this.label63 = new System.Windows.Forms.Label();
-            this.button21 = new System.Windows.Forms.Button();
+            this.btnAddBill = new System.Windows.Forms.Button();
             this.label61 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.soluongBill = new System.Windows.Forms.NumericUpDown();
             this.label60 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.cbTypeBill = new System.Windows.Forms.ComboBox();
             this.label58 = new System.Windows.Forms.Label();
-            this.comboBox11 = new System.Windows.Forms.ComboBox();
+            this.cbGoodsBill = new System.Windows.Forms.ComboBox();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
+            this.dtgvBill = new System.Windows.Forms.DataGridView();
             this.label59 = new System.Windows.Forms.Label();
-            this.listView6 = new System.Windows.Forms.ListView();
-            this.columnHeader37 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader38 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader39 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader35 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader29 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader30 = new System.Windows.Forms.ColumnHeader();
             this.lbHD = new System.Windows.Forms.Label();
             this.tabKH = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -223,17 +233,9 @@ namespace SuperMarket
             this.label25 = new System.Windows.Forms.Label();
             this.tabconDT = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.listthu = new System.Windows.Forms.ListView();
-            this.columnHeader21 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader22 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader23 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader24 = new System.Windows.Forms.ColumnHeader();
+            this.dtgvRevenue = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.listView5 = new System.Windows.Forms.ListView();
-            this.columnHeader25 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader26 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader27 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader28 = new System.Windows.Forms.ColumnHeader();
+            this.dtgvExpenditure = new System.Windows.Forms.DataGridView();
             this.lbDT = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -242,8 +244,9 @@ namespace SuperMarket
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabHD.SuspendLayout();
             this.groupBox22.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soluongBill)).BeginInit();
             this.groupBox21.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).BeginInit();
             this.tabKH.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -272,7 +275,9 @@ namespace SuperMarket
             this.groupBox17.SuspendLayout();
             this.tabconDT.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvRevenue)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvExpenditure)).BeginInit();
             this.SuspendLayout();
             // 
             // tabcontrol
@@ -310,7 +315,7 @@ namespace SuperMarket
             this.tabTT.Padding = new System.Windows.Forms.Padding(3);
             this.tabTT.Size = new System.Drawing.Size(1113, 538);
             this.tabTT.TabIndex = 0;
-            this.tabTT.Text = "Thông Tin";
+            this.tabTT.Text = "Giới Thiệu";
             // 
             // pictureBox1
             // 
@@ -329,11 +334,11 @@ namespace SuperMarket
             this.lbTT.AutoSize = true;
             this.lbTT.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbTT.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lbTT.Location = new System.Drawing.Point(311, 39);
+            this.lbTT.Location = new System.Drawing.Point(260, 40);
             this.lbTT.Name = "lbTT";
-            this.lbTT.Size = new System.Drawing.Size(507, 50);
+            this.lbTT.Size = new System.Drawing.Size(621, 50);
             this.lbTT.TabIndex = 2;
-            this.lbTT.Text = "Phần Mềm Quản Lý Siêu Thị";
+            this.lbTT.Text = "Phần Mềm Quản Lý Siêu Thị HTML";
             this.lbTT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabHD
@@ -354,111 +359,242 @@ namespace SuperMarket
             // groupBox22
             // 
             this.groupBox22.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox22.Controls.Add(this.textBox36);
-            this.groupBox22.Controls.Add(this.button22);
-            this.groupBox22.Controls.Add(this.textBox33);
+            this.groupBox22.Controls.Add(this.label62);
+            this.groupBox22.Controls.Add(this.label47);
+            this.groupBox22.Controls.Add(this.textPay);
+            this.groupBox22.Controls.Add(this.textDiscount);
+            this.groupBox22.Controls.Add(this.cbNameKHBill);
+            this.groupBox22.Controls.Add(this.cbSDTKHBill);
+            this.groupBox22.Controls.Add(this.label38);
+            this.groupBox22.Controls.Add(this.label3);
+            this.groupBox22.Controls.Add(this.dayBill);
+            this.groupBox22.Controls.Add(this.cbPriceBill);
+            this.groupBox22.Controls.Add(this.label20);
+            this.groupBox22.Controls.Add(this.textTotalBill);
+            this.groupBox22.Controls.Add(this.btnThanhtoanBill);
             this.groupBox22.Controls.Add(this.label63);
-            this.groupBox22.Controls.Add(this.button21);
+            this.groupBox22.Controls.Add(this.btnAddBill);
             this.groupBox22.Controls.Add(this.label61);
-            this.groupBox22.Controls.Add(this.numericUpDown1);
+            this.groupBox22.Controls.Add(this.soluongBill);
             this.groupBox22.Controls.Add(this.label60);
             this.groupBox22.Controls.Add(this.label56);
             this.groupBox22.Controls.Add(this.cbTypeBill);
             this.groupBox22.Controls.Add(this.label58);
-            this.groupBox22.Controls.Add(this.comboBox11);
-            this.groupBox22.Location = new System.Drawing.Point(689, 161);
+            this.groupBox22.Controls.Add(this.cbGoodsBill);
+            this.groupBox22.Location = new System.Drawing.Point(689, 53);
             this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Size = new System.Drawing.Size(416, 294);
+            this.groupBox22.Size = new System.Drawing.Size(416, 475);
             this.groupBox22.TabIndex = 9;
             this.groupBox22.TabStop = false;
             // 
-            // textBox36
+            // label62
             // 
-            this.textBox36.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox36.Location = new System.Drawing.Point(42, 155);
-            this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(109, 27);
-            this.textBox36.TabIndex = 18;
+            this.label62.AutoSize = true;
+            this.label62.CausesValidation = false;
+            this.label62.Location = new System.Drawing.Point(162, 351);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(67, 20);
+            this.label62.TabIndex = 37;
+            this.label62.Text = "Đã giảm";
+            this.label62.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button22
+            // label47
             // 
-            this.button22.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button22.Location = new System.Drawing.Point(257, 227);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(109, 50);
-            this.button22.TabIndex = 17;
-            this.button22.Text = "Thanh toán";
-            this.button22.UseVisualStyleBackColor = true;
+            this.label47.AutoSize = true;
+            this.label47.CausesValidation = false;
+            this.label47.Location = new System.Drawing.Point(26, 432);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(116, 20);
+            this.label47.TabIndex = 36;
+            this.label47.Text = "Cần thanh toán";
+            this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox33
+            // textPay
             // 
-            this.textBox33.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox33.Location = new System.Drawing.Point(42, 250);
-            this.textBox33.Name = "textBox33";
-            this.textBox33.Size = new System.Drawing.Size(199, 27);
-            this.textBox33.TabIndex = 16;
+            this.textPay.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textPay.ForeColor = System.Drawing.Color.Red;
+            this.textPay.Location = new System.Drawing.Point(148, 425);
+            this.textPay.Name = "textPay";
+            this.textPay.Size = new System.Drawing.Size(134, 26);
+            this.textPay.TabIndex = 35;
+            // 
+            // textDiscount
+            // 
+            this.textDiscount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textDiscount.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textDiscount.Location = new System.Drawing.Point(162, 377);
+            this.textDiscount.Name = "textDiscount";
+            this.textDiscount.Size = new System.Drawing.Size(120, 26);
+            this.textDiscount.TabIndex = 34;
+            // 
+            // cbNameKHBill
+            // 
+            this.cbNameKHBill.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbNameKHBill.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbNameKHBill.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cbNameKHBill.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cbNameKHBill.DropDownWidth = 200;
+            this.cbNameKHBill.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbNameKHBill.FormattingEnabled = true;
+            this.cbNameKHBill.Location = new System.Drawing.Point(209, 296);
+            this.cbNameKHBill.Name = "cbNameKHBill";
+            this.cbNameKHBill.Size = new System.Drawing.Size(175, 28);
+            this.cbNameKHBill.TabIndex = 33;
+            // 
+            // cbSDTKHBill
+            // 
+            this.cbSDTKHBill.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbSDTKHBill.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbSDTKHBill.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cbSDTKHBill.DropDownWidth = 200;
+            this.cbSDTKHBill.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbSDTKHBill.FormattingEnabled = true;
+            this.cbSDTKHBill.Location = new System.Drawing.Point(28, 296);
+            this.cbSDTKHBill.Name = "cbSDTKHBill";
+            this.cbSDTKHBill.Size = new System.Drawing.Size(175, 28);
+            this.cbSDTKHBill.TabIndex = 32;
+            this.cbSDTKHBill.SelectedIndexChanged += new System.EventHandler(this.cbSDTKHBill_SelectedIndexChanged);
+            this.cbSDTKHBill.TextUpdate += new System.EventHandler(this.cbSDTKHBill_TextUpdate);
+            this.cbSDTKHBill.TextChanged += new System.EventHandler(this.cbSDTKHBill_TextChanged);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.CausesValidation = false;
+            this.label38.Location = new System.Drawing.Point(209, 274);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(118, 20);
+            this.label38.TabIndex = 31;
+            this.label38.Text = "Tên khách hàng";
+            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.CausesValidation = false;
+            this.label3.Location = new System.Drawing.Point(26, 190);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 20);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "Ngày mua";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dayBill
+            // 
+            this.dayBill.CustomFormat = "dd-MM-yyyy";
+            this.dayBill.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dayBill.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dayBill.Location = new System.Drawing.Point(26, 213);
+            this.dayBill.Name = "dayBill";
+            this.dayBill.Size = new System.Drawing.Size(243, 27);
+            this.dayBill.TabIndex = 28;
+            this.dayBill.Value = new System.DateTime(2021, 11, 29, 11, 7, 5, 494);
+            // 
+            // cbPriceBill
+            // 
+            this.cbPriceBill.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cbPriceBill.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cbPriceBill.DropDownWidth = 200;
+            this.cbPriceBill.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbPriceBill.FormattingEnabled = true;
+            this.cbPriceBill.Location = new System.Drawing.Point(26, 157);
+            this.cbPriceBill.Name = "cbPriceBill";
+            this.cbPriceBill.Size = new System.Drawing.Size(154, 28);
+            this.cbPriceBill.TabIndex = 25;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.CausesValidation = false;
+            this.label20.Location = new System.Drawing.Point(26, 134);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(67, 20);
+            this.label20.TabIndex = 24;
+            this.label20.Text = "Giá mua";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textTotalBill
+            // 
+            this.textTotalBill.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textTotalBill.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textTotalBill.Location = new System.Drawing.Point(28, 377);
+            this.textTotalBill.Name = "textTotalBill";
+            this.textTotalBill.Size = new System.Drawing.Size(128, 26);
+            this.textTotalBill.TabIndex = 16;
+            // 
+            // btnThanhtoanBill
+            // 
+            this.btnThanhtoanBill.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnThanhtoanBill.Location = new System.Drawing.Point(288, 377);
+            this.btnThanhtoanBill.Name = "btnThanhtoanBill";
+            this.btnThanhtoanBill.Size = new System.Drawing.Size(96, 81);
+            this.btnThanhtoanBill.TabIndex = 17;
+            this.btnThanhtoanBill.Text = "Thanh toán";
+            this.btnThanhtoanBill.UseVisualStyleBackColor = true;
+            this.btnThanhtoanBill.Click += new System.EventHandler(this.btnThanhtoanBill_Click);
             // 
             // label63
             // 
             this.label63.AutoSize = true;
             this.label63.CausesValidation = false;
-            this.label63.Location = new System.Drawing.Point(42, 227);
+            this.label63.Location = new System.Drawing.Point(26, 351);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(76, 20);
             this.label63.TabIndex = 15;
             this.label63.Text = "Tổng tiền";
             this.label63.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button21
+            // btnAddBill
             // 
-            this.button21.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button21.Location = new System.Drawing.Point(257, 134);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(109, 48);
-            this.button21.TabIndex = 14;
-            this.button21.Text = "Thêm";
-            this.button21.UseVisualStyleBackColor = true;
+            this.btnAddBill.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAddBill.Location = new System.Drawing.Point(275, 157);
+            this.btnAddBill.Name = "btnAddBill";
+            this.btnAddBill.Size = new System.Drawing.Size(109, 83);
+            this.btnAddBill.TabIndex = 14;
+            this.btnAddBill.Text = "Thêm";
+            this.btnAddBill.UseVisualStyleBackColor = true;
+            this.btnAddBill.Click += new System.EventHandler(this.btnAddBill_Click);
             // 
             // label61
             // 
             this.label61.AutoSize = true;
             this.label61.CausesValidation = false;
-            this.label61.Location = new System.Drawing.Point(170, 131);
+            this.label61.Location = new System.Drawing.Point(186, 134);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(71, 20);
             this.label61.TabIndex = 12;
             this.label61.Text = "Số lượng";
             this.label61.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // numericUpDown1
+            // soluongBill
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericUpDown1.Location = new System.Drawing.Point(170, 154);
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.soluongBill.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.soluongBill.Location = new System.Drawing.Point(186, 158);
+            this.soluongBill.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             -2147483648});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(71, 27);
-            this.numericUpDown1.TabIndex = 11;
+            this.soluongBill.Name = "soluongBill";
+            this.soluongBill.Size = new System.Drawing.Size(83, 27);
+            this.soluongBill.TabIndex = 11;
             // 
             // label60
             // 
             this.label60.AutoSize = true;
             this.label60.CausesValidation = false;
-            this.label60.Location = new System.Drawing.Point(42, 131);
+            this.label60.Location = new System.Drawing.Point(26, 274);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(109, 20);
+            this.label60.Size = new System.Drawing.Size(120, 20);
             this.label60.TabIndex = 9;
-            this.label60.Text = "ID khách hàng";
+            this.label60.Text = "SDT khách hàng";
             this.label60.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label56
             // 
             this.label56.AutoSize = true;
             this.label56.CausesValidation = false;
-            this.label56.Location = new System.Drawing.Point(42, 23);
+            this.label56.Location = new System.Drawing.Point(26, 17);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(83, 20);
             this.label56.TabIndex = 6;
@@ -473,42 +609,69 @@ namespace SuperMarket
             this.cbTypeBill.Items.AddRange(new object[] {
             "Bình thường",
             "Giảm giá"});
-            this.cbTypeBill.Location = new System.Drawing.Point(42, 46);
+            this.cbTypeBill.Location = new System.Drawing.Point(26, 40);
             this.cbTypeBill.Name = "cbTypeBill";
-            this.cbTypeBill.Size = new System.Drawing.Size(324, 28);
+            this.cbTypeBill.Size = new System.Drawing.Size(358, 28);
             this.cbTypeBill.TabIndex = 5;
+            this.cbTypeBill.SelectedIndexChanged += new System.EventHandler(this.cbTypeBill_SelectedIndexChanged);
             // 
             // label58
             // 
             this.label58.AutoSize = true;
             this.label58.CausesValidation = false;
-            this.label58.Location = new System.Drawing.Point(42, 77);
+            this.label58.Location = new System.Drawing.Point(26, 74);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(78, 20);
             this.label58.TabIndex = 8;
             this.label58.Text = "Sản phẩm";
             this.label58.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox11
+            // cbGoodsBill
             // 
-            this.comboBox11.DropDownWidth = 200;
-            this.comboBox11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox11.FormattingEnabled = true;
-            this.comboBox11.Location = new System.Drawing.Point(42, 100);
-            this.comboBox11.Name = "comboBox11";
-            this.comboBox11.Size = new System.Drawing.Size(324, 28);
-            this.comboBox11.TabIndex = 7;
+            this.cbGoodsBill.DropDownWidth = 200;
+            this.cbGoodsBill.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbGoodsBill.FormattingEnabled = true;
+            this.cbGoodsBill.Location = new System.Drawing.Point(26, 97);
+            this.cbGoodsBill.Name = "cbGoodsBill";
+            this.cbGoodsBill.Size = new System.Drawing.Size(358, 28);
+            this.cbGoodsBill.TabIndex = 7;
+            this.cbGoodsBill.SelectedIndexChanged += new System.EventHandler(this.cbGoodsBill_SelectedIndexChanged);
             // 
             // groupBox21
             // 
             this.groupBox21.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox21.Controls.Add(this.dtgvBill);
             this.groupBox21.Controls.Add(this.label59);
-            this.groupBox21.Controls.Add(this.listView6);
             this.groupBox21.Location = new System.Drawing.Point(6, 53);
             this.groupBox21.Name = "groupBox21";
             this.groupBox21.Size = new System.Drawing.Size(681, 481);
             this.groupBox21.TabIndex = 6;
             this.groupBox21.TabStop = false;
+            // 
+            // dtgvBill
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgvBill.ColumnHeadersHeight = 30;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvBill.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgvBill.Location = new System.Drawing.Point(6, 60);
+            this.dtgvBill.Name = "dtgvBill";
+            this.dtgvBill.RowTemplate.Height = 25;
+            this.dtgvBill.Size = new System.Drawing.Size(669, 415);
+            this.dtgvBill.TabIndex = 10;
             // 
             // label59
             // 
@@ -521,61 +684,6 @@ namespace SuperMarket
             this.label59.TabIndex = 9;
             this.label59.Text = "Giỏ Hàng";
             this.label59.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // listView6
-            // 
-            this.listView6.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.listView6.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.listView6.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader37,
-            this.columnHeader38,
-            this.columnHeader39,
-            this.columnHeader35,
-            this.columnHeader29,
-            this.columnHeader30});
-            this.listView6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.listView6.FullRowSelect = true;
-            this.listView6.GridLines = true;
-            this.listView6.HideSelection = false;
-            this.listView6.HotTracking = true;
-            this.listView6.HoverSelection = true;
-            this.listView6.LabelWrap = false;
-            this.listView6.Location = new System.Drawing.Point(6, 63);
-            this.listView6.Name = "listView6";
-            this.listView6.Size = new System.Drawing.Size(669, 412);
-            this.listView6.TabIndex = 3;
-            this.listView6.UseCompatibleStateImageBehavior = false;
-            this.listView6.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader37
-            // 
-            this.columnHeader37.Text = "Sản phẩm";
-            this.columnHeader37.Width = 250;
-            // 
-            // columnHeader38
-            // 
-            this.columnHeader38.Text = "Đơn giá";
-            this.columnHeader38.Width = 100;
-            // 
-            // columnHeader39
-            // 
-            this.columnHeader39.Text = "Số lượng";
-            this.columnHeader39.Width = 80;
-            // 
-            // columnHeader35
-            // 
-            this.columnHeader35.Text = "Giảm giá";
-            this.columnHeader35.Width = 80;
-            // 
-            // columnHeader29
-            // 
-            this.columnHeader29.Text = "VAT";
-            this.columnHeader29.Width = 50;
-            // 
-            // columnHeader30
-            // 
-            this.columnHeader30.Text = "Thành tiền";
-            this.columnHeader30.Width = 100;
             // 
             // lbHD
             // 
@@ -1325,23 +1433,23 @@ namespace SuperMarket
             // dtgvNV
             // 
             this.dtgvNV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvNV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvNV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgvNV.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvNV.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvNV.DefaultCellStyle = dataGridViewCellStyle4;
             this.dtgvNV.Location = new System.Drawing.Point(6, 57);
             this.dtgvNV.Name = "dtgvNV";
             this.dtgvNV.RowTemplate.Height = 25;
@@ -1506,7 +1614,6 @@ namespace SuperMarket
             this.textPriceSellHH.Name = "textPriceSellHH";
             this.textPriceSellHH.Size = new System.Drawing.Size(123, 27);
             this.textPriceSellHH.TabIndex = 21;
-            this.textPriceSellHH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textPriceBuyHH
             // 
@@ -1515,7 +1622,6 @@ namespace SuperMarket
             this.textPriceBuyHH.Name = "textPriceBuyHH";
             this.textPriceBuyHH.Size = new System.Drawing.Size(123, 27);
             this.textPriceBuyHH.TabIndex = 20;
-            this.textPriceBuyHH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label26
             // 
@@ -1756,23 +1862,23 @@ namespace SuperMarket
             // dtgvHH
             // 
             this.dtgvHH.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvHH.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvHH.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgvHH.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvHH.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvHH.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtgvHH.Location = new System.Drawing.Point(6, 68);
             this.dtgvHH.Name = "dtgvHH";
             this.dtgvHH.RowTemplate.Height = 25;
@@ -1925,23 +2031,23 @@ namespace SuperMarket
             // dtgvNCC
             // 
             this.dtgvNCC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvNCC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvNCC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dtgvNCC.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvNCC.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvNCC.DefaultCellStyle = dataGridViewCellStyle8;
             this.dtgvNCC.Location = new System.Drawing.Point(6, 60);
             this.dtgvNCC.Name = "dtgvNCC";
             this.dtgvNCC.RowTemplate.Height = 25;
@@ -2418,7 +2524,7 @@ namespace SuperMarket
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tabPage1.Controls.Add(this.listthu);
+            this.tabPage1.Controls.Add(this.dtgvRevenue);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -2426,47 +2532,35 @@ namespace SuperMarket
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tổng thu";
             // 
-            // listthu
+            // dtgvRevenue
             // 
-            this.listthu.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.listthu.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader21,
-            this.columnHeader22,
-            this.columnHeader23,
-            this.columnHeader24});
-            this.listthu.GridLines = true;
-            this.listthu.HideSelection = false;
-            this.listthu.Location = new System.Drawing.Point(1, 1);
-            this.listthu.Name = "listthu";
-            this.listthu.Size = new System.Drawing.Size(634, 374);
-            this.listthu.TabIndex = 1;
-            this.listthu.UseCompatibleStateImageBehavior = false;
-            this.listthu.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader21
-            // 
-            this.columnHeader21.Text = "Sản phẩm";
-            this.columnHeader21.Width = 200;
-            // 
-            // columnHeader22
-            // 
-            this.columnHeader22.Text = "Đơn giá";
-            this.columnHeader22.Width = 100;
-            // 
-            // columnHeader23
-            // 
-            this.columnHeader23.Text = "Số lượng";
-            this.columnHeader23.Width = 100;
-            // 
-            // columnHeader24
-            // 
-            this.columnHeader24.Text = "Thành giá";
-            this.columnHeader24.Width = 150;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvRevenue.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dtgvRevenue.ColumnHeadersHeight = 30;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvRevenue.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dtgvRevenue.Location = new System.Drawing.Point(1, 1);
+            this.dtgvRevenue.Name = "dtgvRevenue";
+            this.dtgvRevenue.RowTemplate.Height = 25;
+            this.dtgvRevenue.Size = new System.Drawing.Size(634, 375);
+            this.dtgvRevenue.TabIndex = 11;
             // 
             // tabPage2
             // 
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tabPage2.Controls.Add(this.listView5);
+            this.tabPage2.Controls.Add(this.dtgvExpenditure);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -2475,42 +2569,30 @@ namespace SuperMarket
             this.tabPage2.Text = "Tổng chi";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // listView5
+            // dtgvExpenditure
             // 
-            this.listView5.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.listView5.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader25,
-            this.columnHeader26,
-            this.columnHeader27,
-            this.columnHeader28});
-            this.listView5.GridLines = true;
-            this.listView5.HideSelection = false;
-            this.listView5.Location = new System.Drawing.Point(1, 1);
-            this.listView5.Name = "listView5";
-            this.listView5.Size = new System.Drawing.Size(634, 374);
-            this.listView5.TabIndex = 2;
-            this.listView5.UseCompatibleStateImageBehavior = false;
-            this.listView5.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader25
-            // 
-            this.columnHeader25.Text = "Sản phẩm";
-            this.columnHeader25.Width = 200;
-            // 
-            // columnHeader26
-            // 
-            this.columnHeader26.Text = "Đơn giá";
-            this.columnHeader26.Width = 100;
-            // 
-            // columnHeader27
-            // 
-            this.columnHeader27.Text = "Số lượng";
-            this.columnHeader27.Width = 100;
-            // 
-            // columnHeader28
-            // 
-            this.columnHeader28.Text = "Thành giá";
-            this.columnHeader28.Width = 150;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvExpenditure.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dtgvExpenditure.ColumnHeadersHeight = 30;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvExpenditure.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dtgvExpenditure.Location = new System.Drawing.Point(1, 1);
+            this.dtgvExpenditure.Name = "dtgvExpenditure";
+            this.dtgvExpenditure.RowTemplate.Height = 25;
+            this.dtgvExpenditure.Size = new System.Drawing.Size(634, 375);
+            this.dtgvExpenditure.TabIndex = 12;
             // 
             // lbDT
             // 
@@ -2553,9 +2635,11 @@ namespace SuperMarket
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1120, 596);
             this.Controls.Add(this.tabcontrol);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "fMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SuperMarket";
             this.tabcontrol.ResumeLayout(false);
             this.tabTT.ResumeLayout(false);
@@ -2565,9 +2649,10 @@ namespace SuperMarket
             this.tabHD.PerformLayout();
             this.groupBox22.ResumeLayout(false);
             this.groupBox22.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soluongBill)).EndInit();
             this.groupBox21.ResumeLayout(false);
             this.groupBox21.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).EndInit();
             this.tabKH.ResumeLayout(false);
             this.tabKH.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -2615,7 +2700,9 @@ namespace SuperMarket
             this.groupBox17.PerformLayout();
             this.tabconDT.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvRevenue)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvExpenditure)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2737,7 +2824,6 @@ namespace SuperMarket
         private System.Windows.Forms.TabControl tabconDT;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.ListView listthu;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
@@ -2767,37 +2853,20 @@ namespace SuperMarket
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ColumnHeader columnHeader21;
-        private System.Windows.Forms.ColumnHeader columnHeader22;
-        private System.Windows.Forms.ColumnHeader columnHeader23;
-        private System.Windows.Forms.ColumnHeader columnHeader24;
-        private System.Windows.Forms.ListView listView5;
-        private System.Windows.Forms.ColumnHeader columnHeader25;
-        private System.Windows.Forms.ColumnHeader columnHeader26;
-        private System.Windows.Forms.ColumnHeader columnHeader27;
-        private System.Windows.Forms.ColumnHeader columnHeader28;
         private System.Windows.Forms.GroupBox groupBox21;
-        private System.Windows.Forms.ListView listView6;
-        private System.Windows.Forms.ColumnHeader columnHeader37;
-        private System.Windows.Forms.ColumnHeader columnHeader38;
-        private System.Windows.Forms.ColumnHeader columnHeader39;
-        private System.Windows.Forms.ColumnHeader columnHeader35;
         private System.Windows.Forms.GroupBox groupBox22;
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.ComboBox cbTypeBill;
         private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.ComboBox comboBox11;
+        private System.Windows.Forms.ComboBox cbGoodsBill;
         private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown soluongBill;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.ColumnHeader columnHeader29;
-        private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.TextBox textBox33;
+        private System.Windows.Forms.Button btnAddBill;
+        private System.Windows.Forms.Button btnThanhtoanBill;
+        private System.Windows.Forms.TextBox textTotalBill;
         private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.ColumnHeader columnHeader30;
-        private System.Windows.Forms.TextBox textBox36;
         private System.Windows.Forms.DateTimePicker birthKH;
         private System.Windows.Forms.DataGridView dtgvKH;
         private System.Windows.Forms.Button btnrefreshKH;
@@ -2822,6 +2891,20 @@ namespace SuperMarket
         private System.Windows.Forms.Button btnRefreshHH;
         private System.Windows.Forms.DataGridView dtgvHH;
         private System.Windows.Forms.ComboBox cbNameSupplierHH;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ComboBox cbPriceBill;
+        private System.Windows.Forms.DataGridView dtgvBill;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dayBill;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.ComboBox cbSDTKHBill;
+        private System.Windows.Forms.ComboBox cbNameKHBill;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.TextBox textPay;
+        private System.Windows.Forms.TextBox textDiscount;
+        private System.Windows.Forms.DataGridView dtgvRevenue;
+        private System.Windows.Forms.DataGridView dtgvExpenditure;
     }
 }
 

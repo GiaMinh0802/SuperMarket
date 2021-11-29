@@ -45,23 +45,44 @@ namespace SuperMarket.DAO
         }
         public bool InsertStaff(string name, string idIndividual, string phone, string address, string birthday, string sex, string office, string shift, int salary)
         {
-            string query = String.Format("INSERT dbo.Staff (nameStaff,iDIndividualStaff,phoneStaff,addressStaff,birthdayStaff,sexStaff,officeStaff,shiftStaff,salaryStaff) " +
-                "VALUES (N'{0}', '{1}', '{2}', N'{3}', '{4}', N'{5}', N'{6}', N'{7}', {8})", name, idIndividual, phone, address, birthday, sex, office, shift, salary);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
-            return result > 0;
+            try
+            {
+                string query = String.Format("INSERT dbo.Staff (nameStaff,iDIndividualStaff,phoneStaff,addressStaff,birthdayStaff,sexStaff,officeStaff,shiftStaff,salaryStaff) " +
+                    "VALUES (N'{0}', '{1}', '{2}', N'{3}', '{4}', N'{5}', N'{6}', N'{7}', {8})", name, idIndividual, phone, address, birthday, sex, office, shift, salary);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public bool UpdateStaff(int id, string name, string idIndividual, string phone, string address, string birthday, string sex, string office, string shift, int salary)
         {
-            string query = String.Format("UPDATE dbo.Staff SET nameStaff = N'{0}', iDIndividualStaff = '{1}', phoneStaff = '{2}', addressStaff = N'{3}', birthdayStaff = '{4}', sexStaff = N'{5}', officeStaff = N'{6}', shiftStaff = N'{7}', salaryStaff = {8} " +
+            try
+            {
+                string query = String.Format("UPDATE dbo.Staff SET nameStaff = N'{0}', iDIndividualStaff = '{1}', phoneStaff = '{2}', addressStaff = N'{3}', birthdayStaff = '{4}', sexStaff = N'{5}', officeStaff = N'{6}', shiftStaff = N'{7}', salaryStaff = {8} " +
                 "WHERE idStaff = {9}", name, idIndividual, phone, address, birthday, sex, office, shift, salary, id);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
-            return result > 0;
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public bool DeleteStaff(int id)
         {
-            string query = String.Format("DELETE dbo.Staff WHERE idStaff = {0}", id);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
-            return result > 0;
+            try
+            {
+                string query = String.Format("DELETE dbo.Staff WHERE idStaff = {0}", id);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public List<Staff> SearchStaffByName(string name)
         {

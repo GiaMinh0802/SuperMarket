@@ -31,5 +31,17 @@ namespace SuperMarket.DAO
             }
             return shifttype;
         }
+        public List<TypeGoods> GetTypeGoodsBillList()
+        {
+            List<TypeGoods> shifttype = new List<TypeGoods>();
+            string query = "SELECT * FROM dbo.TypeGoods WHERE typeGoods != N'Hết hạn'";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                TypeGoods type = new TypeGoods(item);
+                shifttype.Add(type);
+            }
+            return shifttype;
+        }
     }
 }

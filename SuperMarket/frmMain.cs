@@ -20,6 +20,11 @@ namespace SuperMarket
         BindingSource listNV = new BindingSource();
         BindingSource listNCC = new BindingSource();
         BindingSource listHH = new BindingSource();
+        BindingSource listBill = new BindingSource();
+        BindingSource listRevenue = new BindingSource();
+        string rank = null;
+        int total = 0;
+        int discount = 0;
         public fMain()
         {
             InitializeComponent();
@@ -31,6 +36,8 @@ namespace SuperMarket
             dtgvNV.DataSource = listNV;
             dtgvNCC.DataSource = listNCC;
             dtgvHH.DataSource = listHH;
+            dtgvBill.DataSource = listBill;
+            dtgvRevenue.DataSource = listRevenue;
             // Khach hang
             LoadListKH();
             AddKHBinding();
@@ -48,6 +55,17 @@ namespace SuperMarket
             AddHHBinding();
             LoadTypeGoods(cbSearchTypeHH);
             LoadTypeGoods(cbTypeHH);
+            // Hoa don
+            LoadListBill();
+            LoadTypeGoodsBill(cbTypeBill);
+            LoadCustomerBill(cbSDTKHBill);
+            cbSDTKHBill.Text = null;
+            cbNameKHBill.Text = null;
+            textDiscount.Text = null;
+            textPay.Text = null;
+            Total();
+            // Doanh thu
+            LoadListRevenue();
         }
         #region Khach hang
         void LoadListKH()
@@ -58,6 +76,7 @@ namespace SuperMarket
             dtgvKH.Columns["AddressCustomer"].HeaderText = "Địa chỉ";
             dtgvKH.Columns["PhoneNumCustomer"].HeaderText = "SĐT";
             dtgvKH.Columns["BirthDayCustomer"].HeaderText = "Ngày sinh";
+            dtgvKH.Columns["BirthDayCustomer"].DefaultCellStyle.Format = "dd/MM/yyy";
             dtgvKH.Columns["AccumulatedPoints"].HeaderText = "Tổng tiền";
             dtgvKH.Columns["Rank"].HeaderText = "Thành viên";
         }
@@ -73,13 +92,13 @@ namespace SuperMarket
         }
         string RankByPoints(int point)
         {
-            if (point < 500000)
+            if (point < 1000000)
                 return "Không";
-            else if (point >= 500000 && point < 2000000)
+            else if (point >= 1000000 && point < 50000000)
                 return "Đồng";
-            else if (point >= 2000000 && point < 5000000)
+            else if (point >= 50000000 && point < 200000000)
                 return "Bạc";
-            else if (point >= 5000000 && point < 10000000)
+            else if (point >= 200000000 && point < 500000000)
                 return "Vàng";
             else
                 return "Kim Cương";
@@ -101,6 +120,7 @@ namespace SuperMarket
             {
                 MessageBox.Show("Thêm thành công");
                 LoadListKH();
+                LoadCustomerBill(cbSDTKHBill);
             }
             else
             {
@@ -120,6 +140,7 @@ namespace SuperMarket
             {
                 MessageBox.Show("Cập nhật thành công");
                 LoadListKH();
+                LoadCustomerBill(cbSDTKHBill);
             }
             else
             {
@@ -133,6 +154,7 @@ namespace SuperMarket
             {
                 MessageBox.Show("Xóa thành công");
                 LoadListKH();
+                LoadCustomerBill(cbSDTKHBill);
             }
             else
             {
@@ -158,6 +180,7 @@ namespace SuperMarket
             dtgvNV.Columns["PhoneStaff"].HeaderText = "SĐT";
             dtgvNV.Columns["AddressStaff"].HeaderText = "Địa chỉ";
             dtgvNV.Columns["BirthdayStaff"].HeaderText = "Ngày sinh";
+            dtgvNV.Columns["BirthdayStaff"].DefaultCellStyle.Format = "dd/MM/yyy";
             dtgvNV.Columns["SexStaff"].HeaderText = "Giới tính";
             dtgvNV.Columns["OfficeStaff"].HeaderText = "Chức vụ";
             dtgvNV.Columns["ShiftStaff"].HeaderText = "Ca làm";
@@ -361,7 +384,7 @@ namespace SuperMarket
             if (SupplierDAO.Instance.DeleteSupplier(id))
             {
                 MessageBox.Show("Xóa thành công");
-                
+
                 LoadListNCC();
             }
             else
@@ -384,7 +407,9 @@ namespace SuperMarket
             dtgvHH.Columns["PriceIn"].HeaderText = "Giá mua(VNĐ)";
             dtgvHH.Columns["PriceOut"].HeaderText = "Giá bán(VNĐ)";
             dtgvHH.Columns["ExpGoods"].HeaderText = "NSX";
+            dtgvHH.Columns["ExpGoods"].DefaultCellStyle.Format = "dd/MM/yyy";
             dtgvHH.Columns["MfgGoods"].HeaderText = "HSD";
+            dtgvHH.Columns["MfgGoods"].DefaultCellStyle.Format = "dd/MM/yyy";
             dtgvHH.Columns["QuantityGoods"].HeaderText = "Số lượng";
             dtgvHH.Columns["NameSupplier"].HeaderText = "Nhà cung cấp";
             dtgvHH.Columns["VAT"].HeaderText = "VAT(%)";
@@ -422,7 +447,7 @@ namespace SuperMarket
             string mfg = HSD.Value.ToString("yyyMMdd");
             int quantity = Convert.ToInt32(textquantityHH.Text);
             string namesupplier = cbNameSupplierHH.Text;
-            if (GoodsDAO.Instance.InsertGoods(name,type,priceIn,priceOut,exp,mfg,quantity,namesupplier))
+            if (GoodsDAO.Instance.InsertGoods(name, type, priceIn, priceOut, exp, mfg, quantity, namesupplier))
             {
                 MessageBox.Show("Thêm thành công");
                 LoadListHH();
@@ -474,6 +499,314 @@ namespace SuperMarket
         {
             listHH.DataSource = GoodsDAO.Instance.DeleteGoodsByNameSupplier(textSearchNameHH.Text);
         }
+        #endregion
+        #region Hoa don
+        void LoadListBill()
+        {
+            listBill.DataSource = BillInDAO.Instance.GetBillList();
+            dtgvBill.Columns["Id"].Visible = false;
+            dtgvBill.Columns["NameGoods"].HeaderText = "Tên sản phẩm";
+            dtgvBill.Columns["NameGoods"].Width = 290;
+            dtgvBill.Columns["PriceOut"].HeaderText = "Giá";
+            dtgvBill.Columns["PriceOut"].Width = 70;
+            dtgvBill.Columns["CountGoods"].HeaderText = "Số lượng";
+            dtgvBill.Columns["CountGoods"].Width = 80;
+            dtgvBill.Columns["Total"].HeaderText = "Thành tiền";
+            dtgvBill.Columns["Total"].Width = 100;
+            dtgvBill.Columns["DateBill"].HeaderText = "Ngày mua";
+            dtgvBill.Columns["DateBill"].Width = 100;
+            dtgvBill.Columns["DateBill"].DefaultCellStyle.Format = "dd/MM/yyy";
+        }
+        void Total()
+        {
+            total = 0;
+            int n = dtgvBill.Rows.Count;
+            for (int i = 0; i < n; i++)
+            {
+                total += int.Parse(dtgvBill.Rows[i].Cells["Total"].Value.ToString());
+            }
+            textTotalBill.Text = total.ToString();
+            textTotalBill.Text = decimal.Parse(textTotalBill.Text.Replace(",", ".")).ToString("0,0.##");
+        }
+        void Discount()
+        {
+            discount = 0;
+            discount = total * DiscountbyRank(rank)/100;
+            textDiscount.Text = discount.ToString();
+            textDiscount.Text = decimal.Parse(textDiscount.Text.Replace(",", ".")).ToString("0,0.##");
+        }
+        void Pay()
+        {
+            textPay.Text = (total - discount).ToString();
+            textPay.Text = decimal.Parse(textPay.Text.Replace(",", ".")).ToString("0,0.##");
+        }
+        void LoadTypeGoodsBill(ComboBox cb)
+        {
+            cb.DataSource = TypeGoodsDAO.Instance.GetTypeGoodsBillList();
+            cb.DisplayMember = "Typegoods";
+        }
+        void LoadGoodsByType(string type)
+        {
+            cbGoodsBill.DataSource = GoodsDAO.Instance.SearchGoodsByType(type); 
+            cbGoodsBill.DisplayMember = "nameGoods";
+        }
+        void LoadPriceByGoods(string name)
+        {
+            cbPriceBill.DataSource = GoodsDAO.Instance.SearchGoodsByName(name);
+            cbPriceBill.DisplayMember = "priceOut";
+        }
+        private void cbTypeBill_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string type = "";
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedItem == null)
+                return;
+            TypeGoods selected = cb.SelectedItem as TypeGoods;
+            type = selected.Typegoods;
+            LoadGoodsByType(type);
+        }
+        private void cbGoodsBill_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string name = "";
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedItem == null)
+                return;
+            Goods selected = cb.SelectedItem as Goods;
+            name = selected.NameGoods;
+            LoadPriceByGoods(name);
+        }
+        void LoadCustomerBill(ComboBox cb)
+        {
+            cb.DataSource = CustomerDAO.Instance.GetKHList();
+            cb.DisplayMember = "PhoneNumCustomer";
+        }
+        void LoadNameCustomerByPhone(string phone)
+        {
+            cbNameKHBill.DataSource = CustomerDAO.Instance.SearchCustomerByPhone(phone);
+            cbNameKHBill.DisplayMember = "nameCustomer";
+        }
+        string GetRankByPhone(string phone)
+        {
+            int n = dtgvKH.Rows.Count;
+            string rank = "";
+            for (int i = 0; i < n; i++)
+            {
+                if (phone == dtgvKH.Rows[i].Cells["PhoneNumCustomer"].Value.ToString())
+                {
+                    rank = dtgvKH.Rows[i].Cells["Rank"].Value.ToString();
+                }
+            }
+            return rank;
+        }
+        private void cbSDTKHBill_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string phone = "";
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedItem == null)
+                return;
+            Customer selected = cb.SelectedItem as Customer;
+            phone = selected.PhoneNumCustomer;
+            LoadNameCustomerByPhone(phone);
+            rank = GetRankByPhone(phone);
+            Discount();
+            Pay();
+        }
+        private void cbSDTKHBill_TextChanged(object sender, EventArgs e)
+        {
+            Discount();
+            Pay();
+        }
+        private void cbSDTKHBill_TextUpdate(object sender, EventArgs e)
+        {
+            Discount();
+            Pay();
+        }
+        int DiscountbyRank(string rank)
+        {
+            if (rank == "Không")
+                return 0;
+            else if (rank == "Đồng")
+                return 2;
+            else if (rank == "Bạc")
+                return 5;
+            else if (rank == "Vàng")
+                return 10;
+            else if (rank == "Kim Cương")
+                return 20;
+            return 0;
+        }
+        private void btnAddBill_Click(object sender, EventArgs e)
+        {
+            string nameGoods = (cbGoodsBill.SelectedItem as Goods).NameGoods;
+            int price = (cbPriceBill.SelectedItem as Goods).PriceOut;
+            int count = (int)soluongBill.Value;
+            int total = price * count;
+            string date = dayBill.Value.ToString("yyyMMdd");
+            bool check = false;
+            int countcurrent = 0;
+            int n = dtgvBill.Rows.Count;
+            for (int i=0; i < n; i++)
+            {
+                if (nameGoods == dtgvBill.Rows[i].Cells["NameGoods"].Value.ToString())
+                {
+                    check = true;
+                    countcurrent = int.Parse(dtgvBill.Rows[i].Cells["CountGoods"].Value.ToString());
+                    break;
+                }    
+            }    
+            if (check)
+            {
+                if (countcurrent + count == 0)
+                {
+                    if (BillInDAO.Instance.DeleteBill(nameGoods))
+                    {
+                        LoadListBill();
+                        Total();
+                        if (GoodsDAO.Instance.UpdateCountGoods(nameGoods, count))
+                        {
+                            LoadListHH();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lỗi thêm sản phẩm");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi thêm sản phẩm");
+                    }
+                }
+                else if (countcurrent + count > 0)
+                {
+                    if (BillInDAO.Instance.MergeBill(nameGoods, count, total))
+                    {
+                        LoadListBill();
+                        Total();
+                        if (GoodsDAO.Instance.UpdateCountGoods(nameGoods, count))
+                        {
+                            LoadListHH();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lỗi thêm sản phẩm");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi thêm sản phẩm");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi thêm sản phẩm");
+                }
+            }
+            else
+            {
+                if (BillInDAO.Instance.InsertBill(nameGoods, price, count, total, date))
+                {
+                    LoadListBill();
+                    Total();
+                    if (GoodsDAO.Instance.UpdateCountGoods(nameGoods, count))
+                    {
+                        LoadListHH();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi thêm sản phẩm");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi thêm sản phẩm");
+                }   
+            }    
+        }
+        private void btnThanhtoanBill_Click(object sender, EventArgs e)
+        {
+            string name = cbNameKHBill.Text;
+            string phone = cbSDTKHBill.Text;
+            string add = "";
+            string birth = "";
+            int points = total;
+            string rank = RankByPoints(points);
+            bool check = false;
+            int n = dtgvKH.Rows.Count;
+            for (int i = 0; i < n; i++)
+            {
+                if (phone == dtgvKH.Rows[i].Cells["PhoneNumCustomer"].Value.ToString())
+                {
+                    add = dtgvKH.Rows[i].Cells["AddressCustomer"].Value.ToString();
+                    birth = String.Format("{0:yyyyMMdd}", dtgvKH.Rows[i].Cells["BirthDayCustomer"].Value);
+                    points = points + (int)dtgvKH.Rows[i].Cells["AccumulatedPoints"].Value;
+                    rank = RankByPoints(points);
+                    check = true;
+                    break;
+                }
+            }
+            if (check)
+            {
+                if (CustomerDAO.Instance.UpdateBillCustomer(name,add,phone,birth,points,rank))
+                {
+                    LoadListKH();
+                    cbSDTKHBill.Text = null;
+                    cbNameKHBill.Text = null;
+                    textDiscount.Text = null;
+                    textPay.Text = null;
+                    Total();
+                }    
+                else
+                {
+                    MessageBox.Show("Lỗi thanh toán không thành công");
+                }    
+            }    
+            else
+            {
+                if (CustomerDAO.Instance.InsertCustomer(name,add,phone,birth,points,rank))
+                {
+                    LoadListKH();
+                    cbSDTKHBill.Text = null;
+                    cbNameKHBill.Text = null;
+                    textDiscount.Text = null;
+                    textPay.Text = null;
+                    Total();
+                }    
+                else
+                {
+                    MessageBox.Show("Lỗi thanh toán không thành công");
+                }    
+            }
+            if (TotalRevenueDAO.Instance.PayRevenue())
+            {
+                MessageBox.Show("Thanh toán thành công");
+                LoadListRevenue();
+                LoadListBill();
+                Total();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi thanh toán không thành công");
+            }
+        }
+        #endregion
+        #region Doanh thu 
+        void LoadListRevenue()
+        {
+            listRevenue.DataSource = TotalRevenueDAO.Instance.GetTotalRevenueList();
+            dtgvRevenue.Columns["Id"].Visible = false;
+            dtgvRevenue.Columns["NameGoods"].HeaderText = "Tên sản phẩm";
+            dtgvRevenue.Columns["NameGoods"].Width = 250;
+            dtgvRevenue.Columns["PriceOut"].HeaderText = "Giá";
+            dtgvRevenue.Columns["PriceOut"].Width = 70;
+            dtgvRevenue.Columns["CountGoods"].HeaderText = "Số lượng";
+            dtgvRevenue.Columns["CountGoods"].Width = 80;
+            dtgvRevenue.Columns["Total"].HeaderText = "Thành tiền";
+            dtgvRevenue.Columns["Total"].Width = 100;
+            dtgvRevenue.Columns["DateBill"].HeaderText = "Ngày mua";
+            dtgvRevenue.Columns["DateBill"].Width = 100;
+            dtgvRevenue.Columns["DateBill"].DefaultCellStyle.Format = "dd/MM/yyy";
+        }
+
         #endregion
 
 

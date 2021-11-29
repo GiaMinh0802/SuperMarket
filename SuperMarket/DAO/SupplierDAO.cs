@@ -32,23 +32,44 @@ namespace SuperMarket.DAO
         }
         public bool InsertSupplier(string nameSupplier, string address, string phone)
         {
-            string query = String.Format("INSERT dbo.Supplier (nameSupplier,addressSupplier,phoneSupplier) " +
-                "VALUES (N'{0}', N'{1}', '{2}')", nameSupplier, address, phone);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
-            return result > 0;
+            try
+            {
+                string query = String.Format("INSERT dbo.Supplier (nameSupplier,addressSupplier,phoneSupplier) " +
+                    "VALUES (N'{0}', N'{1}', '{2}')", nameSupplier, address, phone);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public bool UpdateSupplier(int id, string nameSupplier, string address, string phone)
         {
-            string query = String.Format("UPDATE dbo.Supplier SET nameSupplier = N'{0}', addressSupplier = N'{1}', phoneSupplier = '{2}'" +
+            try
+            {
+                string query = String.Format("UPDATE dbo.Supplier SET nameSupplier = N'{0}', addressSupplier = N'{1}', phoneSupplier = '{2}'" +
                 "WHERE id = {3}", nameSupplier, address, phone, id);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
-            return result > 0;
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public bool DeleteSupplier(int id)
         {
-            string query = String.Format("DELETE dbo.Supplier WHERE id = {0}", id);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
-            return result > 0;
+            try
+            {
+                string query = String.Format("DELETE dbo.Supplier WHERE id = {0}", id);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public List<Supplier> SearchSupplierByName(string name)
         {
