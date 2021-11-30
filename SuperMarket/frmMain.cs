@@ -497,7 +497,13 @@ namespace SuperMarket
         {
             totalNH = 0;
             int sl = (int)soluongNH.Value;
-            int price = (cbPriceNH.SelectedItem as Goods).PriceIn;
+            int price = 0;
+            if (cbPriceNH.SelectedItem != null)
+            {
+                price = (cbPriceNH.SelectedItem as Goods).PriceIn;
+            }    
+            else
+            { }    
             totalNH = price * sl;
             textTotalNH.Text = totalNH.ToString();
             textTotalNH.Text = decimal.Parse(textTotalNH.Text.Replace(",", ".")).ToString("0,0.##");
@@ -1106,10 +1112,6 @@ namespace SuperMarket
                 textTotalExpenditureDay.Text = "0";
             }
         }
-
-
         #endregion
-
-
     }
 }
