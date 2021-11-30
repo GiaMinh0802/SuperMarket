@@ -657,7 +657,7 @@ namespace SuperMarket
         }
         private void btnSearchNameHH_Click(object sender, EventArgs e)
         {
-            listHH.DataSource = GoodsDAO.Instance.DeleteGoodsByNameSupplier(textSearchNameHH.Text);
+            listHH.DataSource = GoodsDAO.Instance.SearchGoodsByName(textSearchNameHH.Text);
         }
         #endregion
         #region Hoa don
@@ -1111,6 +1111,11 @@ namespace SuperMarket
             {
                 textTotalExpenditureDay.Text = "0";
             }
+        }
+        private void btnTK_Click(object sender, EventArgs e)
+        {
+            Statistics form2 = new Statistics();
+            form2.ShowDialog();
         }
         #endregion
     }

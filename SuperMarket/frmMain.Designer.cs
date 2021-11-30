@@ -2733,6 +2733,7 @@ namespace SuperMarket
             this.btnTK.TabIndex = 21;
             this.btnTK.Text = "Thống kê";
             this.btnTK.UseVisualStyleBackColor = true;
+            this.btnTK.Click += new System.EventHandler(this.btnTK_Click);
             // 
             // label65
             // 
