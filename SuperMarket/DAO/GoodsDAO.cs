@@ -122,5 +122,19 @@ namespace SuperMarket.DAO
                 return false;
             }
         }
+        public bool UpdateCountGoodsNH(string name, int quantity)
+        {
+            try
+            {
+                string query = String.Format("UPDATE dbo.Goods SET quantityGoods = quantityGoods + {0} " +
+                    "WHERE nameGoods = N'{1}'", quantity, name);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

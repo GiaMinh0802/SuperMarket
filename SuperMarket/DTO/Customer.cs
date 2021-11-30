@@ -18,8 +18,8 @@ namespace SuperMarket.DTO
         private string rank;
         public int IDCustomer { get => idCustomer; set => idCustomer = value; }
         public string NameCustomer { get => nameCustomer; set => nameCustomer = value; }
-        public string AddressCustomer { get => addressCustomer; set => addressCustomer = value; }
         public string PhoneNumCustomer { get => phoneNumCustomer; set => phoneNumCustomer = value; }
+        public string AddressCustomer { get => addressCustomer; set => addressCustomer = value; }
         public DateTime BirthDayCustomer { get => birthDayCustomer; set => birthDayCustomer = value; }
         public int AccumulatedPoints { get => accumulatedPoints; set => accumulatedPoints = value; }
         public string Rank { get => rank; set => rank = value; }
@@ -37,8 +37,8 @@ namespace SuperMarket.DTO
         {
             this.IDCustomer = (int)row["idCustomer"];
             this.NameCustomer = row["nameCustomer"].ToString();
-            this.AddressCustomer = row["addressCustomer"].ToString();
             this.PhoneNumCustomer = row["phoneCustomer"].ToString();
+            this.AddressCustomer = row["addressCustomer"].ToString();
             this.BirthDayCustomer = Convert.ToDateTime(row["birthdayCustomer"]);
             this.AccumulatedPoints = (int)row["accumulatedPoints"];
             this.Rank = row["rankCustomer"].ToString();

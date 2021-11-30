@@ -24,10 +24,10 @@ namespace SuperMarket.DTO
         public string NameStaff { get => nameStaff; set => nameStaff = value; }
         public string IDIndividualStaff { get => iDIndividualStaff; set => iDIndividualStaff = value; }
         public string PhoneStaff { get => phoneStaff; set => phoneStaff = value; }
+        public string OfficeStaff { get => officeStaff; set => officeStaff = value; }
         public string AddressStaff { get => addressStaff; set => addressStaff = value; }
         public DateTime BirthdayStaff { get => birthdayStaff; set => birthdayStaff = value; }
         public string SexStaff { get => sexStaff; set => sexStaff = value; }
-        public string OfficeStaff { get => officeStaff; set => officeStaff = value; }
         public string ShiftStaff { get => shiftStaff; set => shiftStaff = value; }
         public int SalaryStaff { get => salaryStaff; set => salaryStaff = value; }
 

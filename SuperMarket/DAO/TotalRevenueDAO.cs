@@ -62,8 +62,8 @@ namespace SuperMarket.DAO
         }
         public bool RefreshRevenue()
         {
-            //try
-            //{
+            try
+            {
                 string query = "SELECT nameGoods, priceOut, SUM(countGoods) AS countGoods, SUM(total) AS total, dateBill " +
                 "INTO #temp " +
                 "FROM dbo.TotalRevenue " +
@@ -75,11 +75,11 @@ namespace SuperMarket.DAO
                 "DROP TABLE #temp";
                 int result = DataProvider.Instance.ExecuteNonQuery(query);
                 return result > 0;
-            //}
-            //catch
-            //{
-            //    return false;
-            //}
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

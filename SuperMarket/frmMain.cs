@@ -22,11 +22,14 @@ namespace SuperMarket
         BindingSource listHH = new BindingSource();
         BindingSource listBill = new BindingSource();
         BindingSource listRevenue = new BindingSource();
+        BindingSource listExpenditure = new BindingSource();
         string rank = null;
         int total = 0;
         int discount = 0;
         int totalRevenue = 0;
+        int totalExpenditure = 0;
         int totalNH = 0;
+        int totalsalaryNV = 0;
         public fMain()
         {
             InitializeComponent();
@@ -40,6 +43,7 @@ namespace SuperMarket
             dtgvHH.DataSource = listHH;
             dtgvBill.DataSource = listBill;
             dtgvRevenue.DataSource = listRevenue;
+            dtgvExpenditure.DataSource = listExpenditure;
             // Khach hang
             LoadListKH();
             AddKHBinding();
@@ -72,6 +76,7 @@ namespace SuperMarket
             Total();
             // Doanh thu
             LoadListRevenue();
+            LoadListExpenditure();
         }
         #region Khach hang
         void LoadListKH()
@@ -353,21 +358,41 @@ namespace SuperMarket
             int salary = Convert.ToInt32(textSalaryNV.Text);
             string office = cbOfficeNV.Text.ToString();
             string shift = cbShiftNV.Text.ToString();
+            totalsalaryNV = 0;
             if (office == "Quản lí")
-                textTotalSalaryNV.Text = "11000000";
+                totalsalaryNV = 11000000;
             else if (office == "Quản lí kho")
-                textTotalSalaryNV.Text = "10000000";
+                totalsalaryNV = 10000000;
             else
             {
                 if (shift == "Fulltime")
-                    textTotalSalaryNV.Text = (salary * 11 * 30).ToString();
+                    totalsalaryNV = (salary * 11 * 30);
                 else
-                    textTotalSalaryNV.Text = (salary * 5 * 30).ToString();
+                    totalsalaryNV = (salary * 5 * 30);
             }
+            textTotalSalaryNV.Text = totalsalaryNV.ToString();
             textTotalSalaryNV.Text = decimal.Parse(textTotalSalaryNV.Text.Replace(",", ".")).ToString("0,0.##");
             if (textTotalSalaryNV.Text == "00")
             {
                 textTotalSalaryNV.Text = "0";
+            }
+        }
+        private void btnSalary_Click(object sender, EventArgs e)
+        {
+            string type = "Trả lương";
+            string name = textNameNV.Text;
+            int price = Convert.ToInt32(textSalaryNV.Text);
+            int count = 1;
+            int total = totalsalaryNV;
+            string day = DateTime.Today.ToString("yyyMMdd");
+            if (TotalExpenditureDAO.Instance.InsertExpenditure(type,name,price,count,total,day))
+            {
+                MessageBox.Show("Trả lương thành công");
+                LoadListExpenditure();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
             }
         }
         #endregion
@@ -484,6 +509,40 @@ namespace SuperMarket
         private void soluongNH_ValueChanged(object sender, EventArgs e)
         {
             TotalNH();
+        }
+        private void btnPayNH_Click(object sender, EventArgs e)
+        {
+            string type = "Nhập hàng";
+            string name = (cbGoodsNH.SelectedItem as Goods).NameGoods;
+            int price = (cbPriceNH.SelectedItem as Goods).PriceIn;
+            int count = (int)soluongNH.Value;
+            int total = totalNH;
+            string day = dayNH.Value.ToString("yyyMMdd");
+            if (TotalExpenditureDAO.Instance.InsertExpenditure(type, name, price, count, total, day))
+            {
+                MessageBox.Show("Nhập hàng thành công");
+                LoadListExpenditure();
+                if (GoodsDAO.Instance.UpdateCountGoodsNH(name,count))
+                {
+                    LoadListHH();
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }
+            if (TotalExpenditureDAO.Instance.RefreshExpenditure())
+            {
+                LoadListExpenditure();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }    
         }
         #endregion
         #region Hang hoa
@@ -953,6 +1012,9 @@ namespace SuperMarket
         }
         #endregion
         #region Doanh thu 
+        //
+        // Tong thu
+        //
         void LoadListRevenue()
         {
             listRevenue.DataSource = TotalRevenueDAO.Instance.GetTotalRevenueList();
@@ -999,10 +1061,55 @@ namespace SuperMarket
                 textTotalRevenueDay.Text = "0";
             }
         }
+        //
+        // Tong chi
+        //
+        void LoadListExpenditure()
+        {
+            listExpenditure.DataSource = TotalExpenditureDAO.Instance.GetTotalExpenditureList();
+            dtgvExpenditure.Columns["Id"].Visible = false;
+            dtgvExpenditure.Columns["TypeBill"].HeaderText = "Hình thức";
+            dtgvExpenditure.Columns["NameGoods"].HeaderText = "Tên sản phẩm";
+            dtgvExpenditure.Columns["PriceOut"].HeaderText = "Đơn giá";
+            dtgvExpenditure.Columns["CountGoods"].HeaderText = "Số lượng";
+            dtgvExpenditure.Columns["Total"].HeaderText = "Thành tiền";
+            dtgvExpenditure.Columns["DateBill"].HeaderText = "Ngày mua";
+            dtgvExpenditure.Columns["DateBill"].DefaultCellStyle.Format = "dd/MM/yyy";
+            TotalExpenditure();
+        }
+        private void btnSearchExpenditure_Click(object sender, EventArgs e)
+        {
+            string daystart = dayStartExpenditure.Value.ToString("yyyMMdd");
+            string dayfinish = dayFinishExpenditure.Value.ToString("yyyMMdd");
+            if (dayStartExpenditure.Value <= dayStartExpenditure.Value)
+            {
+                listExpenditure.DataSource = TotalExpenditureDAO.Instance.GetExpenditureByDate(daystart, dayfinish);
+                TotalExpenditure();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn lại mốc thời gian");
+            }
+        }
+        void TotalExpenditure()
+        {
+            totalExpenditure = 0;
+            int n = dtgvExpenditure.Rows.Count;
+            for (int i = 0; i < n; i++)
+            {
+                totalExpenditure += int.Parse(dtgvExpenditure.Rows[i].Cells["Total"].Value.ToString());
+            }
+            textTotalExpenditureDay.Text = totalExpenditure.ToString();
+            textTotalExpenditureDay.Text = decimal.Parse(textTotalExpenditureDay.Text.Replace(",", ".")).ToString("0,0.##");
+            if (textTotalExpenditureDay.Text == "00")
+            {
+                textTotalExpenditureDay.Text = "0";
+            }
+        }
 
 
         #endregion
 
-        
+
     }
 }
