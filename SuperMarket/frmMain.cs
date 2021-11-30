@@ -25,6 +25,8 @@ namespace SuperMarket
         string rank = null;
         int total = 0;
         int discount = 0;
+        int totalRevenue = 0;
+        int totalNH = 0;
         public fMain()
         {
             InitializeComponent();
@@ -50,11 +52,15 @@ namespace SuperMarket
             // Nha cung cap
             LoadListNCC();
             AddNCCBinding();
+            LoadNameGoodsNH();
+            cbPriceNH.Text = "0";
+            cbGoodsNH.Text = null;
             // Hang hoa
             LoadListHH();
             AddHHBinding();
             LoadTypeGoods(cbSearchTypeHH);
             LoadTypeGoods(cbTypeHH);
+            TotalNH();
             // Hoa don
             LoadListBill();
             LoadTypeGoodsBill(cbTypeBill);
@@ -239,26 +245,47 @@ namespace SuperMarket
         private void btnRefreshNV_Click(object sender, EventArgs e)
         {
             LoadListNV();
+            textTotalSalaryNV.Text = null;
+            btnCa1.BackColor = Color.Transparent;
+            btnCa2.BackColor = Color.Transparent;
+            btnCa3.BackColor = Color.Transparent;
+            btnFulltime.BackColor = Color.Transparent;
         }
         private void btnCa1_Click(object sender, EventArgs e)
         {
             string shift = "Ca 1";
             listNV.DataSource = GetNVListByShift(shift);
+            btnCa1.BackColor = Color.LightCoral;
+            btnCa2.BackColor = Color.Transparent;
+            btnCa3.BackColor = Color.Transparent;
+            btnFulltime.BackColor = Color.Transparent;
         }
         private void btnCa2_Click(object sender, EventArgs e)
         {
             string shift = "Ca 2";
             listNV.DataSource = GetNVListByShift(shift);
+            btnCa1.BackColor = Color.Transparent;
+            btnCa2.BackColor = Color.LightCoral;
+            btnCa3.BackColor = Color.Transparent;
+            btnFulltime.BackColor = Color.Transparent;
         }
         private void btnCa3_Click(object sender, EventArgs e)
         {
             string shift = "Ca 3";
             listNV.DataSource = GetNVListByShift(shift);
+            btnCa1.BackColor = Color.Transparent;
+            btnCa2.BackColor = Color.Transparent;
+            btnCa3.BackColor = Color.LightCoral;
+            btnFulltime.BackColor = Color.Transparent;
         }
         private void btnFulltime_Click(object sender, EventArgs e)
         {
             string shift = "Fulltime";
             listNV.DataSource = GetNVListByShift(shift);
+            btnCa1.BackColor = Color.Transparent;
+            btnCa2.BackColor = Color.Transparent;
+            btnCa3.BackColor = Color.Transparent;
+            btnFulltime.BackColor = Color.LightCoral;
         }
         private void btnAddNV_Click(object sender, EventArgs e)
         {
@@ -320,6 +347,28 @@ namespace SuperMarket
         private void btnSearchNV_Click(object sender, EventArgs e)
         {
             listNV.DataSource = SearchStaffByName(textSearchNV.Text);
+        }
+        private void btnCalcSalary_Click(object sender, EventArgs e)
+        {
+            int salary = Convert.ToInt32(textSalaryNV.Text);
+            string office = cbOfficeNV.Text.ToString();
+            string shift = cbShiftNV.Text.ToString();
+            if (office == "Quản lí")
+                textTotalSalaryNV.Text = "11000000";
+            else if (office == "Quản lí kho")
+                textTotalSalaryNV.Text = "10000000";
+            else
+            {
+                if (shift == "Fulltime")
+                    textTotalSalaryNV.Text = (salary * 11 * 30).ToString();
+                else
+                    textTotalSalaryNV.Text = (salary * 5 * 30).ToString();
+            }
+            textTotalSalaryNV.Text = decimal.Parse(textTotalSalaryNV.Text.Replace(",", ".")).ToString("0,0.##");
+            if (textTotalSalaryNV.Text == "00")
+            {
+                textTotalSalaryNV.Text = "0";
+            }
         }
         #endregion
         #region Nha cung cap
@@ -396,6 +445,46 @@ namespace SuperMarket
         {
             listNCC.DataSource = SupplierDAO.Instance.SearchSupplierByName(textSearchNCC.Text);
         }
+        void LoadNameGoodsNH()
+        {
+            cbGoodsNH.DataSource = GoodsDAO.Instance.GetGoodsList();
+            cbGoodsNH.DisplayMember = "NameGoods";
+        }
+        void LoadPriceGoodsNH(string name)
+        {
+            cbPriceNH.DataSource = GoodsDAO.Instance.SearchGoodsByName(name);
+            cbPriceNH.DisplayMember = "PriceIn";
+            cbPriceNH.Text = decimal.Parse(cbPriceNH.Text.Replace(",", ".")).ToString("0,0.##");
+        }
+        private void cbGoodsNH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string name = "";
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedItem == null)
+                return;
+            Goods selected = cb.SelectedItem as Goods;
+            name = selected.NameGoods;
+            LoadPriceGoodsNH(name);
+            soluongNH.Value = 0;
+            TotalNH();
+        }
+        void TotalNH()
+        {
+            totalNH = 0;
+            int sl = (int)soluongNH.Value;
+            int price = (cbPriceNH.SelectedItem as Goods).PriceIn;
+            totalNH = price * sl;
+            textTotalNH.Text = totalNH.ToString();
+            textTotalNH.Text = decimal.Parse(textTotalNH.Text.Replace(",", ".")).ToString("0,0.##");
+            if (textTotalNH.Text == "00")
+            {
+                textTotalNH.Text = "0";
+            }
+        }
+        private void soluongNH_ValueChanged(object sender, EventArgs e)
+        {
+            TotalNH();
+        }
         #endregion
         #region Hang hoa
         void LoadListHH()
@@ -452,6 +541,7 @@ namespace SuperMarket
                 MessageBox.Show("Thêm thành công");
                 LoadListHH();
                 LoadTypeGoodsBill(cbTypeBill);
+                LoadNameGoodsNH();
             }
             else
             {
@@ -474,6 +564,7 @@ namespace SuperMarket
                 MessageBox.Show("Cập nhật thành công");
                 LoadListHH();
                 LoadTypeGoodsBill(cbTypeBill);
+                LoadNameGoodsNH();
             }
             else
             {
@@ -488,6 +579,7 @@ namespace SuperMarket
                 MessageBox.Show("Xóa thành công");
                 LoadListHH();
                 LoadTypeGoodsBill(cbTypeBill);
+                LoadNameGoodsNH();
             }
             else
             {
@@ -550,6 +642,10 @@ namespace SuperMarket
         {
             textPay.Text = (total - discount).ToString();
             textPay.Text = decimal.Parse(textPay.Text.Replace(",", ".")).ToString("0,0.##");
+            if (textPay.Text == "00")
+            {
+                textPay.Text = "0";
+            }
         }
         void LoadTypeGoodsBill(ComboBox cb)
         {
@@ -569,6 +665,7 @@ namespace SuperMarket
         {
             cbPriceBill.DataSource = GoodsDAO.Instance.SearchGoodsByName(name);
             cbPriceBill.DisplayMember = "priceOut";
+            cbPriceBill.Text = decimal.Parse(cbPriceBill.Text.Replace(",", ".")).ToString("0,0.##");
         }
         private void cbTypeBill_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -630,11 +727,13 @@ namespace SuperMarket
         {
             Discount();
             Pay();
+            cbNameKHBill.Text = null;
         }
         private void cbSDTKHBill_TextUpdate(object sender, EventArgs e)
         {
             Discount();
             Pay();
+            cbNameKHBill.Text = null;
         }
         int DiscountbyRank(string rank)
         {
@@ -869,8 +968,41 @@ namespace SuperMarket
             dtgvRevenue.Columns["DateBill"].HeaderText = "Ngày mua";
             dtgvRevenue.Columns["DateBill"].Width = 100;
             dtgvRevenue.Columns["DateBill"].DefaultCellStyle.Format = "dd/MM/yyy";
+            TotalRevenue();
         }
-        
+        private void btnSearchRevenue_Click(object sender, EventArgs e)
+        {
+            string daystart = dayStartRevenue.Value.ToString("yyyMMdd");
+            string dayfinish = dayFinishRevenue.Value.ToString("yyyMMdd");
+            if (dayStartRevenue.Value <= dayFinishRevenue.Value)
+            {
+                listRevenue.DataSource = TotalRevenueDAO.Instance.GetRevenueByDate(daystart, dayfinish);
+                TotalRevenue();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn lại mốc thời gian");
+            }
+        }
+        void TotalRevenue()
+        {
+            totalRevenue = 0;
+            int n = dtgvRevenue.Rows.Count;
+            for (int i = 0; i < n; i++)
+            {
+                totalRevenue += int.Parse(dtgvRevenue.Rows[i].Cells["Total"].Value.ToString());
+            }
+            textTotalRevenueDay.Text = totalRevenue.ToString();
+            textTotalRevenueDay.Text = decimal.Parse(textTotalRevenueDay.Text.Replace(",", ".")).ToString("0,0.##");
+            if (textTotalRevenueDay.Text == "00")
+            {
+                textTotalRevenueDay.Text = "0";
+            }
+        }
+
+
         #endregion
+
+        
     }
 }

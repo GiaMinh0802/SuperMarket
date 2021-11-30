@@ -30,6 +30,19 @@ namespace SuperMarket.DAO
             }
             return list;
         }
+        public List<TotalRevenue> GetRevenueByDate(string daystart, string dayfinish)
+        {
+            List<TotalRevenue> list = new List<TotalRevenue>();
+            string query = String.Format("SELECT * FROM dbo.TotalRevenue " +
+                "WHERE dateBill >= '{0}' AND dateBill <= '{1}'", daystart, dayfinish);
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                TotalRevenue revenue = new TotalRevenue(item);
+                list.Add(revenue);
+            }
+            return list;
+        }
         public bool PayRevenue()
         {
             try
