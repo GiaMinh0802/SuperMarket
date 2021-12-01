@@ -302,6 +302,14 @@ namespace SuperMarket
             string sex = textSexNV.Text;
             string office = cbOfficeNV.Text;
             string shift = cbShiftNV.Text;
+            if (office == "Quản lí" || office == "Quản lí kho")
+            {
+                if (shift != "Fulltime")
+                {
+                    MessageBox.Show("Chức vụ này chỉ được chọn Fulltime");
+                    return;
+                }
+            }
             int salary = SalaryByOffice(office);
             if (StaffDAO.Instance.InsertStaff(name, idIndividual, phone, add, birthday, sex, office, shift, salary))
             {
@@ -324,6 +332,14 @@ namespace SuperMarket
             string sex = textSexNV.Text;
             string office = cbOfficeNV.Text;
             string shift = cbShiftNV.Text;
+            if (office == "Quản lí" || office == "Quản lí kho")
+            {
+                if (shift != "Fulltime")
+                {
+                    MessageBox.Show("Chức vụ này chỉ được chọn Fulltime");
+                    return;
+                }
+            }
             int salary = SalaryByOffice(office);
             if (StaffDAO.Instance.UpdateStaff(id, name, idIndividual, phone, add, birthday, sex, office, shift, salary))
             {
@@ -1279,6 +1295,9 @@ namespace SuperMarket
                 MessageBox.Show("Vui lòng nhập năm muốn kiểm tra!");
             }
         }
+
         #endregion
+
+
     }
 }
