@@ -1067,6 +1067,11 @@ namespace SuperMarket
                 textTotalRevenueDay.Text = "0";
             }
         }
+        private void btnRefreshRevenue_Click(object sender, EventArgs e)
+        {
+            LoadListRevenue();
+            TotalRevenue();
+        }
         //
         // Tong chi
         //
@@ -1112,10 +1117,167 @@ namespace SuperMarket
                 textTotalExpenditureDay.Text = "0";
             }
         }
+        private void btnRefreshExpenditure_Click(object sender, EventArgs e)
+        {
+            LoadListExpenditure();
+            TotalExpenditure();
+        }
+        // Tac vu doanh thu
+        bool IsNumber(string pValue)
+        {
+            foreach (Char c in pValue)
+            {
+                if (!Char.IsDigit(c))
+                    return false;
+            }
+            return true;
+        }
         private void btnTK_Click(object sender, EventArgs e)
         {
-            Statistics form2 = new Statistics();
-            form2.ShowDialog();
+            string day = DateTime.Now.ToString("yyyMMdd");
+            listRevenue.DataSource = TotalRevenueDAO.Instance.GetRevenueMaxByDate(day);
+            int max = 0;
+            int n = dtgvRevenue.Rows.Count;
+            if (n>0)
+            {
+                max = Convert.ToInt32(dtgvRevenue.Rows[0].Cells["CountGoods"].Value);
+                for (int i=1; i<n; i++)
+                {
+                    if (max < Convert.ToInt32(dtgvRevenue.Rows[i].Cells["CountGoods"].Value))
+                        max = Convert.ToInt32(dtgvRevenue.Rows[i].Cells["CountGoods"].Value);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Hôm nay không bán được sản phẩm nào");
+            }
+            listRevenue.DataSource = TotalRevenueDAO.Instance.GetMaxGoods(day, max);
+            TotalRevenue();
+            dtgvRevenue.Columns["Id"].Visible = false;
+        }
+        private void btnCalcByMonth_Click(object sender, EventArgs e)
+        {
+            string daystart;
+            string dayfinish;
+            string month = cbMonth.Text;
+            month = month.Remove(0, 6);
+            int year = 0;
+            if (textYearByMonth.Text != "" && IsNumber(textYearByMonth.Text))
+            {
+                year = Convert.ToInt32(textYearByMonth.Text);
+                int day = DateTime.DaysInMonth(year, int.Parse(month));
+                daystart = year.ToString() + month + "01";
+                dayfinish = year.ToString() + month + day.ToString();
+                listRevenue.DataSource = TotalRevenueDAO.Instance.GetRevenueByDate(daystart, dayfinish);
+                dtgvRevenue.Columns["Id"].Visible = false;
+                listExpenditure.DataSource = TotalExpenditureDAO.Instance.GetExpenditureByDate(daystart, dayfinish);
+                dtgvExpenditure.Columns["Id"].Visible = false;
+                TotalRevenue();
+                TotalExpenditure();
+                textRevenueByMonth.Text = (totalRevenue - totalExpenditure).ToString();
+                textRevenueByMonth.Text = decimal.Parse(textRevenueByMonth.Text.Replace(",", ".")).ToString("0,0.##");
+                if (textRevenueByMonth.Text == "00")
+                {
+                    textRevenueByMonth.Text = "0";
+                }
+                cbPricious.Text = "";
+                textYearByPricious.Text = "";
+                textRevenueByPrecious.Text = "";
+                textYear.Text = "";
+                textRevenueByYear.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập năm muốn kiểm tra!");
+            }
+        }
+        private void btnCalcByPrecious_Click(object sender, EventArgs e)
+        {
+            string daystart;
+            string dayfinish;
+            string Precious = cbPricious.Text;
+            if (Precious == "Quý 1")
+            {
+                daystart = "0101";
+                dayfinish = "0331";
+            }
+            else if (Precious == "Quý 2")
+            {
+                daystart = "0401";
+                dayfinish = "0630";
+            }
+            else if (Precious == "Quý 3")
+            {
+                daystart = "0701";
+                dayfinish = "0930";
+            }
+            else
+            {
+                daystart = "1001";
+                dayfinish = "1231";
+            }
+            string year = "";
+            if (textYearByPricious.Text != "" && IsNumber(textYearByPricious.Text))
+            {
+                year = textYearByPricious.Text;
+                daystart = year + daystart;
+                dayfinish = year + dayfinish;
+                listRevenue.DataSource = TotalRevenueDAO.Instance.GetRevenueByDate(daystart, dayfinish);
+                dtgvRevenue.Columns["Id"].Visible = false;
+                listExpenditure.DataSource = TotalExpenditureDAO.Instance.GetExpenditureByDate(daystart, dayfinish);
+                dtgvExpenditure.Columns["Id"].Visible = false;
+                TotalRevenue();
+                TotalExpenditure();
+                textRevenueByPrecious.Text = (totalRevenue - totalExpenditure).ToString();
+                textRevenueByPrecious.Text = decimal.Parse(textRevenueByPrecious.Text.Replace(",", ".")).ToString("0,0.##");
+                if (textRevenueByPrecious.Text == "00")
+                {
+                    textRevenueByPrecious.Text = "0";
+                }
+                cbMonth.Text = "";
+                textYearByMonth.Text = "";
+                textRevenueByMonth.Text = "";
+                textYear.Text = "";
+                textRevenueByYear.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập năm muốn kiểm tra!");
+            }
+        }
+        private void btnCalcByYear_Click(object sender, EventArgs e)
+        {
+            string daystart = "0101";
+            string dayfinish = "1231";
+            string year = "";
+            if (textYear.Text != "" && IsNumber(textYear.Text))
+            {
+                year = textYear.Text;
+                daystart = year + daystart;
+                dayfinish = year + dayfinish;
+                listRevenue.DataSource = TotalRevenueDAO.Instance.GetRevenueByDate(daystart, dayfinish);
+                dtgvRevenue.Columns["Id"].Visible = false;
+                listExpenditure.DataSource = TotalExpenditureDAO.Instance.GetExpenditureByDate(daystart, dayfinish);
+                dtgvExpenditure.Columns["Id"].Visible = false;
+                TotalRevenue();
+                TotalExpenditure();
+                textRevenueByYear.Text = (totalRevenue - totalExpenditure).ToString();
+                textRevenueByYear.Text = decimal.Parse(textRevenueByYear.Text.Replace(",", ".")).ToString("0,0.##");
+                if (textRevenueByYear.Text == "00")
+                {
+                    textRevenueByYear.Text = "0";
+                }
+                cbMonth.Text = "";
+                textYearByMonth.Text = "";
+                textRevenueByMonth.Text = "";
+                cbPricious.Text = "";
+                textYearByPricious.Text = "";
+                textRevenueByPrecious.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập năm muốn kiểm tra!");
+            }
         }
         #endregion
     }

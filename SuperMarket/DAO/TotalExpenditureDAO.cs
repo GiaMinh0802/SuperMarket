@@ -22,7 +22,7 @@ namespace SuperMarket.DAO
         {
             List<TotalExpenditure> list = new List<TotalExpenditure>();
             string query = "SELECT * FROM dbo.TotalExpenditure " +
-                "ORDER BY typeBill";
+                "ORDER BY dateBill,typeBill";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {
@@ -36,7 +36,7 @@ namespace SuperMarket.DAO
             List<TotalExpenditure> list = new List<TotalExpenditure>();
             string query = String.Format("SELECT * FROM dbo.TotalExpenditure " +
                 "WHERE dateBill >= '{0}' AND dateBill <= '{1}' " +
-                "ORDER BY typeBill", daystart, dayfinish);
+                "ORDER BY dateBill,typeBill", daystart, dayfinish);
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {
