@@ -20,11 +20,10 @@ namespace SuperMarket.DTO
         public int Id { get => id; set => id = value; }
         public string TypeBill { get => typeBill; set => typeBill = value; }
         public string NameGoods { get => nameGoods; set => nameGoods = value; }
-        public int PriceOut { get => priceOut; set => priceOut = value; }
         public int CountGoods { get => countGoods; set => countGoods = value; }
         public int Total { get => total; set => total = value; }
         public DateTime DateBill { get => dateBill; set => dateBill = value; }
-       
+        public int PriceOut { get => priceOut; set => priceOut = value; }
 
         public TotalExpenditure(int id, string typeBill, string nameGoods, int priceOut, int countGoods, int total, DateTime dateBill)
         {

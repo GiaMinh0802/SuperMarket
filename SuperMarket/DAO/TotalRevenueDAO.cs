@@ -21,7 +21,7 @@ namespace SuperMarket.DAO
         public List<TotalRevenue> GetTotalRevenueList()
         {
             List<TotalRevenue> list = new List<TotalRevenue>();
-            string query = "SELECT * FROM dbo.TotalRevenue";
+            string query = "SELECT * FROM dbo.TotalRevenue ORDER BY dateBill";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {
@@ -34,7 +34,34 @@ namespace SuperMarket.DAO
         {
             List<TotalRevenue> list = new List<TotalRevenue>();
             string query = String.Format("SELECT * FROM dbo.TotalRevenue " +
-                "WHERE dateBill >= '{0}' AND dateBill <= '{1}'", daystart, dayfinish);
+                "WHERE dateBill >= '{0}' AND dateBill <= '{1}' " +
+                "ORDER BY dateBill", daystart, dayfinish);
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                TotalRevenue revenue = new TotalRevenue(item);
+                list.Add(revenue);
+            }
+            return list;
+        }
+        public List<TotalRevenue> GetRevenueMaxByDate(string day)
+        {
+            List<TotalRevenue> list = new List<TotalRevenue>();
+            string query = String.Format("SELECT * FROM dbo.TotalRevenue " +
+                "WHERE dateBill = '{0}'", day);
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                TotalRevenue revenue = new TotalRevenue(item);
+                list.Add(revenue);
+            }
+            return list;
+        }
+        public List<TotalRevenue> GetMaxGoods(string day, int max)
+        {
+            List<TotalRevenue> list = new List<TotalRevenue>();
+            string query = String.Format("SELECT * FROM dbo.TotalRevenue " +
+                "WHERE dateBill = '{0}' AND countGoods = {1}", day, max);
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {
