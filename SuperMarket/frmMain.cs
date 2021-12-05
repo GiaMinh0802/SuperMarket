@@ -193,13 +193,24 @@ namespace SuperMarket
         void LoadListNV()
         {
             listNV.DataSource = StaffDAO.Instance.GetNVList();
-            dtgvNV.Columns["IdStaff"].HeaderText = "ID";
-            dtgvNV.Columns["NameStaff"].HeaderText = "Tên nhân viên";
+            dtgvNV.Columns["Id"].DisplayIndex = 0;
+            dtgvNV.Columns["Name"].DisplayIndex = 1;
+            dtgvNV.Columns["IDIndividualStaff"].DisplayIndex = 2;
+            dtgvNV.Columns["Phone"].DisplayIndex = 3;
+            dtgvNV.Columns["OfficeStaff"].DisplayIndex = 4;
+            dtgvNV.Columns["ShiftStaff"].DisplayIndex = 5;
+            dtgvNV.Columns["SexStaff"].DisplayIndex = 6;
+            dtgvNV.Columns["Address"].DisplayIndex = 7;
+            dtgvNV.Columns["BirthDay"].DisplayIndex = 8;
+            dtgvNV.Columns["SalaryStaff"].DisplayIndex = 9;
+            //
+            dtgvNV.Columns["Id"].HeaderText = "ID";
+            dtgvNV.Columns["Name"].HeaderText = "Tên nhân viên";
             dtgvNV.Columns["IDIndividualStaff"].HeaderText = "CCCD/CMND";
-            dtgvNV.Columns["PhoneStaff"].HeaderText = "SĐT";
-            dtgvNV.Columns["AddressStaff"].HeaderText = "Địa chỉ";
-            dtgvNV.Columns["BirthdayStaff"].HeaderText = "Ngày sinh";
-            dtgvNV.Columns["BirthdayStaff"].DefaultCellStyle.Format = "dd/MM/yyy";
+            dtgvNV.Columns["Phone"].HeaderText = "SĐT";
+            dtgvNV.Columns["Address"].HeaderText = "Địa chỉ";
+            dtgvNV.Columns["BirthDay"].HeaderText = "Ngày sinh";
+            dtgvNV.Columns["BirthDay"].DefaultCellStyle.Format = "dd/MM/yyy";
             dtgvNV.Columns["SexStaff"].HeaderText = "Giới tính";
             dtgvNV.Columns["OfficeStaff"].HeaderText = "Chức vụ";
             dtgvNV.Columns["ShiftStaff"].HeaderText = "Ca làm";
@@ -207,12 +218,12 @@ namespace SuperMarket
         }
         void AddNVBinding()
         {
-            textIDNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "IdStaff", true, DataSourceUpdateMode.Never));
-            textNameNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "NameStaff", true, DataSourceUpdateMode.Never));
+            textIDNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "Id", true, DataSourceUpdateMode.Never));
+            textNameNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "Name", true, DataSourceUpdateMode.Never));
             textCCCDNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "IDIndividualStaff", true, DataSourceUpdateMode.Never));
-            textSDTNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "PhoneStaff", true, DataSourceUpdateMode.Never));
-            textAddNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "AddressStaff", true, DataSourceUpdateMode.Never));
-            birthNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "BirthdayStaff", true, DataSourceUpdateMode.Never));
+            textSDTNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "Phone", true, DataSourceUpdateMode.Never));
+            textAddNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "Address", true, DataSourceUpdateMode.Never));
+            birthNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "BirthDay", true, DataSourceUpdateMode.Never));
             textSexNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "SexStaff", true, DataSourceUpdateMode.Never));
             cbOfficeNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "OfficeStaff", true, DataSourceUpdateMode.Never));
             cbShiftNV.DataBindings.Add(new Binding("Text", dtgvNV.DataSource, "ShiftStaff", true, DataSourceUpdateMode.Never));
