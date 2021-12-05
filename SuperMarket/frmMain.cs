@@ -82,22 +82,30 @@ namespace SuperMarket
         void LoadListKH()
         {
             listKH.DataSource = CustomerDAO.Instance.GetKHList();
-            dtgvKH.Columns["IDCustomer"].HeaderText = "ID";
-            dtgvKH.Columns["NameCustomer"].HeaderText = "Tên khách hàng";
-            dtgvKH.Columns["AddressCustomer"].HeaderText = "Địa chỉ";
-            dtgvKH.Columns["PhoneNumCustomer"].HeaderText = "SĐT";
-            dtgvKH.Columns["BirthDayCustomer"].HeaderText = "Ngày sinh";
-            dtgvKH.Columns["BirthDayCustomer"].DefaultCellStyle.Format = "dd/MM/yyy";
+            dtgvKH.Columns["Id"].DisplayIndex = 0;
+            dtgvKH.Columns["Name"].DisplayIndex = 1;
+            dtgvKH.Columns["Phone"].DisplayIndex = 2;
+            dtgvKH.Columns["AccumulatedPoints"].DisplayIndex = 3;
+            dtgvKH.Columns["Rank"].DisplayIndex = 4;
+            dtgvKH.Columns["Address"].DisplayIndex = 5;
+            dtgvKH.Columns["BirthDay"].DisplayIndex = 6;
+            //
+            dtgvKH.Columns["Id"].HeaderText = "ID";
+            dtgvKH.Columns["Name"].HeaderText = "Tên khách hàng";
+            dtgvKH.Columns["Address"].HeaderText = "Địa chỉ";
+            dtgvKH.Columns["Phone"].HeaderText = "SĐT";
+            dtgvKH.Columns["BirthDay"].HeaderText = "Ngày sinh";
+            dtgvKH.Columns["BirthDay"].DefaultCellStyle.Format = "dd/MM/yyy";
             dtgvKH.Columns["AccumulatedPoints"].HeaderText = "Tổng tiền";
             dtgvKH.Columns["Rank"].HeaderText = "Thành viên";
         }
         void AddKHBinding()
         {
-            textIDKH.DataBindings.Add(new Binding("Text", dtgvKH.DataSource, "IDCustomer", true, DataSourceUpdateMode.Never));
-            textNameKH.DataBindings.Add(new Binding("Text", dtgvKH.DataSource, "NameCustomer", true, DataSourceUpdateMode.Never));
-            textAddKH.DataBindings.Add(new Binding("Text", dtgvKH.DataSource, "AddressCustomer", true, DataSourceUpdateMode.Never));
-            textSDTKH.DataBindings.Add(new Binding("Text", dtgvKH.DataSource, "PhoneNumCustomer", true, DataSourceUpdateMode.Never));
-            birthKH.DataBindings.Add(new Binding("Text", dtgvKH.DataSource, "BirthDayCustomer", true, DataSourceUpdateMode.Never));
+            textIDKH.DataBindings.Add(new Binding("Text", dtgvKH.DataSource, "Id", true, DataSourceUpdateMode.Never));
+            textNameKH.DataBindings.Add(new Binding("Text", dtgvKH.DataSource, "Name", true, DataSourceUpdateMode.Never));
+            textAddKH.DataBindings.Add(new Binding("Text", dtgvKH.DataSource, "Address", true, DataSourceUpdateMode.Never));
+            textSDTKH.DataBindings.Add(new Binding("Text", dtgvKH.DataSource, "Phone", true, DataSourceUpdateMode.Never));
+            birthKH.DataBindings.Add(new Binding("Text", dtgvKH.DataSource, "BirthDay", true, DataSourceUpdateMode.Never));
             textTotalKH.DataBindings.Add(new Binding("Text", dtgvKH.DataSource, "AccumulatedPoints", true, DataSourceUpdateMode.Never));
             textRankKH.DataBindings.Add(new Binding("Text", dtgvKH.DataSource, "Rank", true, DataSourceUpdateMode.Never));
         }
@@ -771,12 +779,12 @@ namespace SuperMarket
         void LoadCustomerBill(ComboBox cb)
         {
             cb.DataSource = CustomerDAO.Instance.GetKHList();
-            cb.DisplayMember = "PhoneNumCustomer";
+            cb.DisplayMember = "Phone";
         }
         void LoadNameCustomerByPhone(string phone)
         {
             cbNameKHBill.DataSource = CustomerDAO.Instance.SearchCustomerByPhone(phone);
-            cbNameKHBill.DisplayMember = "nameCustomer";
+            cbNameKHBill.DisplayMember = "Name";
         }
         string GetRankByPhone(string phone)
         {
@@ -784,7 +792,7 @@ namespace SuperMarket
             string rank = "";
             for (int i = 0; i < n; i++)
             {
-                if (phone == dtgvKH.Rows[i].Cells["PhoneNumCustomer"].Value.ToString())
+                if (phone == dtgvKH.Rows[i].Cells["Phone"].Value.ToString())
                 {
                     rank = dtgvKH.Rows[i].Cells["Rank"].Value.ToString();
                 }
@@ -798,7 +806,7 @@ namespace SuperMarket
             if (cb.SelectedItem == null)
                 return;
             Customer selected = cb.SelectedItem as Customer;
-            phone = selected.PhoneNumCustomer;
+            phone = selected.Phone;
             LoadNameCustomerByPhone(phone);
             rank = GetRankByPhone(phone);
             Discount();
@@ -1295,9 +1303,6 @@ namespace SuperMarket
                 MessageBox.Show("Vui lòng nhập năm muốn kiểm tra!");
             }
         }
-
         #endregion
-
-
     }
 }
