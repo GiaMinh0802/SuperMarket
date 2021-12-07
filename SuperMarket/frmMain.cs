@@ -135,6 +135,15 @@ namespace SuperMarket
             string birthday = birthKH.Value.ToString("yyyMMdd");
             int points = Convert.ToInt32(textTotalKH.Text);
             string rank = RankByPoints(points);
+            int n = dtgvKH.Rows.Count;
+            for (int i=0; i<n; i++)
+            {
+                if (phone == dtgvKH.Rows[i].Cells["Phone"].Value.ToString())
+                {
+                    MessageBox.Show("Đã có số điện thoại này!");
+                    return;
+                }  
+            }
             if (CustomerDAO.Instance.InsertCustomer(name, add, phone, birthday, points, rank))
             {
                 MessageBox.Show("Thêm thành công");
@@ -145,6 +154,7 @@ namespace SuperMarket
             {
                 MessageBox.Show("Lỗi");
             }
+            return;
         }
         private void btnUpdateKH_Click(object sender, EventArgs e)
         {
@@ -624,6 +634,7 @@ namespace SuperMarket
         }
         private void btnRefreshHH_Click(object sender, EventArgs e)
         {
+            CheckHSD();
             LoadListHH();
         }
         private void btnAddHH_Click(object sender, EventArgs e)
@@ -693,6 +704,27 @@ namespace SuperMarket
         private void btnSearchNameHH_Click(object sender, EventArgs e)
         {
             listHH.DataSource = GoodsDAO.Instance.SearchGoodsByName(textSearchNameHH.Text);
+        }
+        void CheckHSD()
+        {
+            DateTime today = DateTime.Now.Date;
+            int n = dtgvHH.Rows.Count;
+            for (int i=0; i<n; i++)
+            {
+                string temp = String.Format(dtgvHH.Rows[i].Cells["MfgGoods"].Value.ToString(), "yyyy/MM/dd");
+                DateTime HSDSP = DateTime.Parse(temp);
+                int result = DateTime.Compare(today, HSDSP);
+                if (result > 0)
+                {
+                    int id = Convert.ToInt32(dtgvHH.Rows[i].Cells["IdGoods"].Value.ToString());
+                    if (GoodsDAO.Instance.CheckHSD(id, "Hết Hạn"))
+                    {
+                        LoadListHH();
+                        LoadTypeGoodsBill(cbTypeBill);
+                        LoadNameGoodsNH();
+                    }
+                }    
+            }
         }
         #endregion
         #region Hoa don
@@ -986,10 +1018,10 @@ namespace SuperMarket
             int n = dtgvKH.Rows.Count;
             for (int i = 0; i < n; i++)
             {
-                if (phone == dtgvKH.Rows[i].Cells["PhoneNumCustomer"].Value.ToString())
+                if (phone == dtgvKH.Rows[i].Cells["Phone"].Value.ToString())
                 {
-                    add = dtgvKH.Rows[i].Cells["AddressCustomer"].Value.ToString();
-                    birth = String.Format("{0:yyyyMMdd}", dtgvKH.Rows[i].Cells["BirthDayCustomer"].Value);
+                    add = dtgvKH.Rows[i].Cells["Address"].Value.ToString();
+                    birth = String.Format("{0:yyyyMMdd}", dtgvKH.Rows[i].Cells["BirthDay"].Value);
                     points = points + (int)dtgvKH.Rows[i].Cells["AccumulatedPoints"].Value;
                     rank = RankByPoints(points);
                     check = true;

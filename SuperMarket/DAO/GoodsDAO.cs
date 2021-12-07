@@ -84,6 +84,20 @@ namespace SuperMarket.DAO
                 return false;
             }
         }
+        public bool CheckHSD(int id, string type)
+        {
+            try
+            {
+                string query = String.Format("UPDATE dbo.Goods SET typeGoods = N'{0}' " +
+                    "WHERE idGoods = {1}", type, id);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public List<Goods> SearchGoodsByType(string type)
         {
             List<Goods> list = new List<Goods>();
