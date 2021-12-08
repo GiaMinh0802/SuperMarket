@@ -30,10 +30,13 @@ namespace SuperMarket
         int totalExpenditure = 0;
         int totalNH = 0;
         int totalsalaryNV = 0;
+        string goodsSelling;
         public fMain()
         {
             InitializeComponent();
             LoadAll();
+            Holiday();
+            CheckHSD();
         }
         void LoadAll()
         {
@@ -612,7 +615,6 @@ namespace SuperMarket
             dtgvHH.Columns["QuantityGoods"].HeaderText = "Số lượng";
             dtgvHH.Columns["NameSupplier"].HeaderText = "Nhà cung cấp";
             dtgvHH.Columns["VAT"].HeaderText = "VAT(%)";
-
         }
         void AddHHBinding()
         {
@@ -634,7 +636,7 @@ namespace SuperMarket
         }
         private void btnRefreshHH_Click(object sender, EventArgs e)
         {
-            CheckHSD();
+
             LoadListHH();
         }
         private void btnAddHH_Click(object sender, EventArgs e)
@@ -725,6 +727,50 @@ namespace SuperMarket
                     }
                 }    
             }
+        }
+        void Holiday()
+        {
+            int n = dtgvHH.Rows.Count;
+            int id;
+            int price;
+            string day = DateTime.Now.ToString("dd");
+            string month = DateTime.Now.ToString("MM");
+            if (day == month)
+            {
+                for (int i=0; i<n; i++)
+                {
+                    if (dtgvHH.Rows[i].Cells["TypeGoods"].Value.ToString() == "Bình thường")
+                    {
+                        id = Convert.ToInt32(dtgvHH.Rows[i].Cells["IdGoods"].Value);
+                        price = Convert.ToInt32(dtgvHH.Rows[i].Cells["PriceOut"].Value);
+                        price = price * 80 / 100;
+                        if (GoodsDAO.Instance.UpdateGoods(id, "Giảm giá", price))
+                        {
+                            LoadListHH();
+                            LoadTypeGoodsBill(cbTypeBill);
+                            LoadNameGoodsNH();
+                        }
+                    }    
+                }    
+            }    
+            else if (Convert.ToInt32(day) - Convert.ToInt32(month) == 1)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    if (dtgvHH.Rows[i].Cells["TypeGoods"].Value.ToString() == "Giảm giá")
+                    {
+                        id = Convert.ToInt32(dtgvHH.Rows[i].Cells["IdGoods"].Value);
+                        price = Convert.ToInt32(dtgvHH.Rows[i].Cells["PriceOut"].Value);
+                        price = price * 100 / 80;
+                        if (GoodsDAO.Instance.UpdateGoods(id, "Bình thường", price))
+                        {
+                            LoadListHH();
+                            LoadTypeGoodsBill(cbTypeBill);
+                            LoadNameGoodsNH();
+                        }
+                    }
+                }
+            }      
         }
         #endregion
         #region Hoa don
@@ -1221,6 +1267,42 @@ namespace SuperMarket
             listRevenue.DataSource = TotalRevenueDAO.Instance.GetMaxGoods(day, max);
             TotalRevenue();
             dtgvRevenue.Columns["Id"].Visible = false;
+            goodsSelling = dtgvRevenue.Rows[0].Cells["NameGoods"].Value.ToString();
+            n = dtgvHH.Rows.Count;
+            int id;
+            int price;
+            for (int i = 0; i < n; i++)
+            {
+                if (dtgvHH.Rows[i].Cells["TypeGoods"].Value.ToString() == "Tiềm năng")
+                {
+                    id = Convert.ToInt32(dtgvHH.Rows[i].Cells["IdGoods"].Value);
+                    price = Convert.ToInt32(dtgvHH.Rows[i].Cells["priceOut"].Value);
+                    price = price * 100 / 95;
+                    if (GoodsDAO.Instance.UpdateGoods(id, "Bình thường", price))
+                    {
+                        LoadListHH();
+                        LoadTypeGoodsBill(cbTypeBill);
+                        LoadNameGoodsNH();
+                    }
+                    break;
+                }
+            }
+            for (int i=0; i<n; i++)
+            {
+                if (goodsSelling == dtgvHH.Rows[i].Cells["NameGoods"].Value.ToString())
+                {
+                    id = Convert.ToInt32(dtgvHH.Rows[i].Cells["IdGoods"].Value);
+                    price = Convert.ToInt32(dtgvHH.Rows[i].Cells["priceOut"].Value);
+                    price = price * 95 / 100;
+                    if (GoodsDAO.Instance.UpdateGoods(id, "Tiềm năng", price))
+                    {
+                        LoadListHH();
+                        LoadTypeGoodsBill(cbTypeBill);
+                        LoadNameGoodsNH();
+                    }
+                    break;
+                }    
+            } 
         }
         private void btnCalcByMonth_Click(object sender, EventArgs e)
         {
